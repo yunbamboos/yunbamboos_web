@@ -10,6 +10,6 @@ export class Menu {
     iframe: string;
     icon: string;
     parent_menu_id: string;
-    childrens: Array<Menu>;
+    children: Array<Menu>;
 }
 

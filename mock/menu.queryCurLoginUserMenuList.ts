@@ -24,10 +24,10 @@ export default [
                             icon: 'iconfont icon-index'
                         },
                         {
-                            menu_id: '101000',
-                            path: '/index',
-                            name: 'index',
-                            component: '/index/index.vue',
+                            menu_id: '100011',
+                            path: '/my/attention',
+                            name: 'attention',
+                            component: '/my/attention/index.vue',
                             title: '关注',
                             link: 'false',
                             hide: false,
@@ -36,11 +36,23 @@ export default [
                             icon: 'iconfont icon-index'
                         },
                         {
+                            menu_id: '101000',
+                            path: '/my/watch-history',
+                            name: 'watch-history',
+                            component: '/my/watch-history/index.vue',
+                            title: '观看历史',
+                            link: 'false',
+                            hide: false,
+                            keep_alive: true,
+                            iframe: 'false',
+                            icon: 'iconfont icon-index'
+                        },
+                        {
                             menu_id: '102000',
-                            path: '/index',
-                            name: 'index',
-                            component: '/index/index.vue',
-                            title: '测试',
+                            path: '/my/favorite',
+                            name: 'favorite',
+                            component: '/my/favorite/index.vue',
+                            title: '我的收藏',
                             link: 'false',
                             hide: false,
                             keep_alive: true,

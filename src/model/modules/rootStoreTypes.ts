@@ -1,6 +1,6 @@
 import {Config, RouteList, User} from "@/model";
 
-export interface RootStoreTypes {
+export class RootStoreTypes {
     config: Config;
     routeList: RouteList;
     user: User;

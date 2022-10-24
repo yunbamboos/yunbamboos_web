@@ -4,7 +4,7 @@ import store from '@/store';
 import loading from '@/utils/loading';
 import {menu} from '@/api';
 import {setAddRoute} from "@/router/index";
-import {getMenuFromService, menuToRouteComponent} from "@/router/menuToRoute";
+import {getMenuFromService, menuToRoute} from "@/router/menuToRoute";
 
 export const routes: Array<RouteRecordRaw> = [
     {
@@ -77,9 +77,10 @@ export async function initRouteList() {
         return false;
     }
     // 处理路由（component），添加到routes（@/router/route）第一个顶级 children 的路由
-    routes[0].children = await menuToRouteComponent(res.data.menu_list);
+    routes[0].children = menuToRoute(res.data.menu_list);
+    console.log("1111111111111111", routes[0])
     // 添加动态路由
-    // await setAddRoute();
+    setAddRoute();
     loading.done();
 }
 

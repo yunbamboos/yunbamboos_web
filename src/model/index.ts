@@ -5,6 +5,8 @@ import {RouteList} from "@/model/modules/routeList";
 import {Token} from "@/model/modules/token";
 import {User} from "@/model/modules/user";
 import {Menu} from "@/model/modules/menu";
+import {Route} from "@/model/modules/route";
+
 
 export {
     Authorization,
@@ -13,5 +15,6 @@ export {
     RouteList,
     User,
     Token,
-    Menu
+    Menu,
+    Route
 };

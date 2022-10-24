@@ -1,5 +1,5 @@
 import {menu} from "@/api";
-import {Menu, RouteList} from "@/model";
+import {Menu, Route} from "@/model";
 
 const layoutModules: any = import.meta.glob('../layout/routerView/*.{vue,tsx}');
 const viewsModules: any = import.meta.glob('../views/**/*.{vue,tsx}');
@@ -16,13 +16,17 @@ export async function getMenuFromService() {
 /**
  * 菜单Menu转换路由Route
  */
-export function menuToRoute(menuList: Array<Menu>) {
+export function menuToRoute(menuList: Array<Menu>){
     if (!menuList) return;
     return menuList.map((menu: Menu) => {
-        // if (item.component) item.component = dynamicImport(dynamicViewsModules, item.component as string);
-        // item.children && menuToRouteComponent(item.children);
         let route = new Route();
-
+        route.menu_id = menu.menu_id;
+        route.name = menu.name;
+        route.path = menu.path;
+        route.component = dynamicImport(dynamicViewsModules, menu.component);
+        if (menu.children) {
+            route.children = menuToRoute(menu.children)
+        }
         return route;
     });
 }
