@@ -1,12 +1,12 @@
 import {User} from "@/model";
 
 export namespace Param {
-    export class QryCurLoginUser {
+    export class QueryCurLoginUser {
     }
 }
 
 export namespace Result {
-    export class QryCurLoginUser {
+    export class QueryCurLoginUser {
         code: number;
         msg: string;
         data: {

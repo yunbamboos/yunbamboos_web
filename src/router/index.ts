@@ -30,8 +30,8 @@ router.beforeEach(async to => {
     // 判断是否需要验证权限
     if(to.meta.auth){
         if(await auth()){
-            if(hasNecessaryRoute(to)){
-                initRouteList();
+            if(!hasNecessaryRoute(to)){
+                await initRouteList();
             }
         } else {
             return import.meta.env.VITE_LOGIN;

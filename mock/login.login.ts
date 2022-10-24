@@ -1,6 +1,6 @@
 export default [
     {
-        url: '/api/login',
+        url: '/api/login/login',
         method: 'post',
         timeout: 100,
         statusCode: 200,

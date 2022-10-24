@@ -1,8 +1,13 @@
 import {RouteRecordRaw} from 'vue-router';
+import {ElMessage} from 'element-plus';
 import store from '@/store';
+import loading from '@/utils/loading';
+import {menu} from '@/api';
+import {setAddRoute} from "@/router/index";
+import {getMenuFromService, menuToRouteComponent} from "@/router/menuToRoute";
 
 export const routes: Array<RouteRecordRaw> = [
-  {
+    {
         path: '/',
         name: '/',
         component: () => import('@/layout/index.vue'),
@@ -47,8 +52,10 @@ export const routes: Array<RouteRecordRaw> = [
     }
 ];
 
+const win: any = window;
+
 /**判断路由列表中是否存在当前路由*/
-export function hasNecessaryRoute(to){
+export function hasNecessaryRoute(to) {
     console.log(store);
     console.log(store.getters['routeList/length']);
     console.log(store.getters['routeList/test'](1));
@@ -58,6 +65,23 @@ export function hasNecessaryRoute(to){
 /**
  * 初始化路由列表
  * */
-export function initRouteList(){
-
+export async function initRouteList() {
+    // 界面 loading 动画开始执行
+    if (win.nextLoading === undefined) loading.start();
+    // 触发初始化用户信息
+    await store.dispatch('user/setUserFromSession');
+    // 获取菜单数据
+    const res = await getMenuFromService();
+    console.log(res);
+    if (res.code !== 200) {
+        ElMessage.error("加载菜单失败");
+        return false;
+    }
+    // 处理路由（component），添加到routes（@/router/route）第一个顶级 children 的路由
+    routes[0].children = await menuToRouteComponent(res.data);
+    // 添加动态路由
+    // await setAddRoute();
+    loading.done();
 }
+
+

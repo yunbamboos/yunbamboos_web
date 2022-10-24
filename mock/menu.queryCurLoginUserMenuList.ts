@@ -14,7 +14,7 @@
 
 export default [
     {
-        url: '/api/menu',
+        url: '/api/menu/queryCurLoginUserMenuList',
         method: 'post',
         timeout: 100,
         statusCode: 200,
