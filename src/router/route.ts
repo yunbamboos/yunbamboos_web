@@ -72,13 +72,12 @@ export async function initRouteList() {
     await store.dispatch('user/setUserFromSession');
     // 获取菜单数据
     const res = await getMenuFromService();
-    console.log(res);
     if (res.code !== 200) {
         ElMessage.error("加载菜单失败");
         return false;
     }
     // 处理路由（component），添加到routes（@/router/route）第一个顶级 children 的路由
-    routes[0].children = await menuToRouteComponent(res.data);
+    routes[0].children = await menuToRouteComponent(res.data.menu_list);
     // 添加动态路由
     // await setAddRoute();
     loading.done();

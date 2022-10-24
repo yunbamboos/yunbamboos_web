@@ -1,4 +1,5 @@
 import {menu} from "@/api";
+import {Menu, RouteList} from "@/model";
 
 const layoutModules: any = import.meta.glob('../layout/routerView/*.{vue,tsx}');
 const viewsModules: any = import.meta.glob('../views/**/*.{vue,tsx}');
@@ -13,16 +14,20 @@ export async function getMenuFromService() {
 }
 
 /**
- * 菜单转换路由 component
+ * 菜单Menu转换路由Route
  */
-export function menuToRouteComponent(routes: any) {
-    if (!routes) return;
-    return routes.map((item: any) => {
-        if (item.component) item.component = dynamicImport(dynamicViewsModules, item.component as string);
-        item.children && menuToRouteComponent(item.children);
-        return item;
+export function menuToRoute(menuList: Array<Menu>) {
+    if (!menuList) return;
+    return menuList.map((menu: Menu) => {
+        // if (item.component) item.component = dynamicImport(dynamicViewsModules, item.component as string);
+        // item.children && menuToRouteComponent(item.children);
+        let route = new Route();
+
+        return route;
     });
 }
+
+
 
 /**
  * 路由 component 转换函数
