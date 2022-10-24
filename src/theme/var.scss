@@ -1,18 +1,18 @@
 :root{
-  // 主布局背景色
-  --layout-main-color: #f8f8f8;
-  // 标题颜色 和 悬浮显示颜色
-  --title-text-color: #ffffff;
-  --title-text-hover-color: #3ac8df;
-  // 边框颜色
-  --layout-border-color-light: #f1f2f3;
-
-  // 左侧栏 背景
-  --layout-aside-bg: #545c64;
-  // 左侧栏 菜单宽度
-  --layout-aside-menu-width: 200px;
-
-  // 顶部导航条 背景
-  --layout-bg-top-bar: #f8f8f8;
-
+  // 全局背景颜色
+  --layout-background-color: rgba(241, 238, 238, 1);
+  // 侧边栏的宽度
+  --layout-aside-width: 240px;
+  // 侧边栏的背景色
+  --layout-aside-background-color: rgba(241, 238, 238, 1);
+  // 侧边栏 收缩后的宽度 同时logo容器的宽度
+  --layout-aside-logo-width: 80px;
+  // 侧边栏 logo 高度
+  --layout-aside-logo-height: 60px;
+  // 侧边栏 右边框宽度
+  --layout-aside-border-right-width: 1px;
+  // 侧边栏 边框颜色
+  --layout-aside-border-color: #f885ff;
+  // header 高度
+  --layout-header-height: 60px;
 }

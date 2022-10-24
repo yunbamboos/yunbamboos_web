@@ -1,66 +1,38 @@
 <template>
-  <div class="h100">
-    <el-aside class="layout-aside">
-      <Logo/>
-      <el-scrollbar class="layout-aside-menu">
-        <el-menu router
-                 :default-active="defaultActive"
-                 :background-color="menu_background_color"
-                 :text-color="menu_text_color"
-                 :active-text-color="menu_active_text_color"
-                 :collapse="isCollapse"
-                 style="border-width: 0;">
-          <template v-for="menu in menuList" :key="menu.path">
-            <el-menu-item :index="menu.path" :title="menu.meta.title">
-              <el-icon :class="menu.meta.icon"></el-icon>
-              <span>{{ menu.meta.title }}</span>
-            </el-menu-item>
-          </template>
-        </el-menu>
-      </el-scrollbar>
-    </el-aside>
+  <div class="layout-aside">
+    <Logo/>
+    <el-scrollbar class="layout-aside-menu">
+      <el-menu :collapse="collapse">
+        <template v-for="menu in menuList" :key="menu.path">
+          <el-menu-item :index="menu.path" :title="menu.title">
+            <span>{{ menu.title }}</span>
+          </el-menu-item>
+        </template>
+      </el-menu>
+    </el-scrollbar>
   </div>
 </template>
 
 <script lang="ts">
-import {toRefs, reactive, onBeforeMount, defineComponent} from 'vue';
-import {useRoute, onBeforeRouteUpdate} from 'vue-router';
-import {useStore} from '@/store';
-import Logo from '@/layout/logo/index.vue';
+import {toRefs, reactive, defineComponent} from 'vue';
+import Logo from '@/layout/component/logo.vue';
 
 export default defineComponent({
-  name: 'layoutAside',
-  components: {Logo},
+  name: 'aside',
+  components: {
+    Logo
+  },
   setup() {
-    const store = useStore();
-    const route = useRoute();
     const state = reactive({
-      defaultActive: route.path,
-      menu_background_color: 'transparent',
-      menu_text_color: '#ffffff',
-      menu_active_text_color: '#3ac8df',
-      isCollapse: false,
-      menuList: []
+      collapse: false,
+      menuList:[]
     });
-    // 设置/过滤路由（非静态路由/是否显示在菜单中）
-    const setFilterRoutes = () => {
-      console.log(store.state.routesList.routesList);
-      (state.menuList as any) = filterRoutesFun(store.state.routesList.routesList);
-    };
-    // 路由过滤递归函数
-    const filterRoutesFun = (arr: Array<object>) => {
-      return arr
-          .filter((item: any) => !item.meta.isHide)
-          .map((item: any) => {
-            item = Object.assign({}, item);
-            if (item.children) item.children = filterRoutesFun(item.children);
-            return item;
-          });
-    };
-    // 页面加载前
-    onBeforeMount(() => {
-      setFilterRoutes();
-    });
+    for(let i=0;i<100;i++){
+      state.menuList.push({
+        path: "path" + i,
+        title: "path" + i,
+      });
+    }
     return {
       ...toRefs(state)
     };

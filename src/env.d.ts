@@ -1,6 +1,7 @@
 /// <reference types="vite/client" />
 interface ImportMetaEnv {
     readonly VITE_APP_TITLE: string; // 标题
+    readonly VITE_TOKEN: string; // 标题
     readonly VITE_PORT: number // 启动端口
     readonly VITE_LOGIN: string; // 登录界面
     readonly VITE_INDEX: string; // 首页
