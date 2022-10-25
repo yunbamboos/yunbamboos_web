@@ -5,7 +5,7 @@
 
     </div>
     <div class="layout-center">
-
+      <router-view></router-view>
     </div>
   </div>
 </template>

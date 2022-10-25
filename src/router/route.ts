@@ -2,52 +2,57 @@ import {RouteRecordRaw} from 'vue-router';
 import {ElMessage} from 'element-plus';
 import store from '@/store';
 import loading from '@/utils/loading';
-import {menu} from '@/api';
-import {setAddRoute} from "@/router/index";
+import {setAddRoute, setMenuToStore} from "@/router/index";
 import {getMenuFromService, menuToRoute} from "@/router/menuToRoute";
+import {Route} from "@/model";
 
-export const routes: Array<RouteRecordRaw> = [
+export const routes: Array<Route> = [
     {
         path: '/',
         name: '/',
         component: () => import('@/layout/index.vue'),
         redirect: import.meta.env.VITE_INDEX as string,
+        meta: {
+            title: '', // 标题
+            link: '', // 外部链接地址
+            hide: true, // 隐藏菜单
+            cache: false, // 保存组件
+            iframe: false, // 独立界面
+            icon: '' // 图标
+        },
         children: [
             {
+                menu_id: '1',
                 path: "/index",
                 name: 'index',
                 component: () => import('@/views/index/index.vue'),
                 meta: {
                     title: '首页', // 标题
-                    auth: true, // 验证权限
-                    link: false, // 外部链接地址
+                    link: 'false', // 外部链接地址
                     hide: false, // 隐藏菜单
-                    keepAlive: true, // 保存组件
-                    iframe: false, // 独立界面
-                    icon: 'iconfont icon-index' // 图标
-                }
-            }, {
-                path: "/user",
-                name: 'user',
-                component: () => import('@/views/user/index.vue'),
-                meta: {
-                    title: '用户管理', // 标题
-                    auth: false, // 验证权限
-                    link: false, // 外部链接地址
-                    hide: true, // 隐藏菜单
-                    keepAlive: true, // 保存组件
+                    cache: true, // 保存组件
                     iframe: false, // 独立界面
                     icon: 'iconfont icon-index' // 图标
                 }
             }
         ]
-    }, {
+    }
+];
+
+/**
+ * 定义默认路由
+ * 此路由不要动，前端添加路由的话，请在 `routes 数组` 中添加
+ * @description 前端控制直接改 routes 中的路由，后端控制不需要修改，请求接口路由数据时，会覆盖 routes 第一个顶级 children 的内容（全屏，不包含 layout 中的路由出口）
+ * @returns 返回路由菜单数据
+ */
+export const defaultRoutes: Array<RouteRecordRaw> = [
+    {
         path: '/login',
         name: 'login',
         component: () => import('@/views/login/index.vue'),
         meta: {
             title: '登录', // 标题
-            auth: false, // 验证权限
+            auth: false // 验证权限
         }
     }
 ];
@@ -55,11 +60,8 @@ export const routes: Array<RouteRecordRaw> = [
 const win: any = window;
 
 /**判断路由列表中是否存在当前路由*/
-export function hasNecessaryRoute(to) {
-    console.log(store);
-    console.log(store.getters['routeList/length']);
-    console.log(store.getters['routeList/test'](1));
-    return false;
+export function hasNecessaryRoute() {
+    return store.getters['routeList/length'] !== 0;
 }
 
 /**
@@ -78,10 +80,11 @@ export async function initRouteList() {
     }
     // 处理路由（component），添加到routes（@/router/route）第一个顶级 children 的路由
     routes[0].children = menuToRoute(res.data.menu_list);
-    console.log("1111111111111111", routes[0])
     // 添加动态路由
-    setAddRoute();
+    await setAddRoute();
+    await setMenuToStore();
     loading.done();
 }
+
 
 

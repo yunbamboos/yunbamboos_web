@@ -23,6 +23,7 @@ export function menuToRoute(menuList: Array<Menu>){
         route.menu_id = menu.menu_id;
         route.name = menu.name;
         route.path = menu.path;
+
         route.component = dynamicImport(dynamicViewsModules, menu.component);
         if (menu.children) {
             route.children = menuToRoute(menu.children)
@@ -30,8 +31,6 @@ export function menuToRoute(menuList: Array<Menu>){
         return route;
     });
 }
-
-
 
 /**
  * 路由 component 转换函数

@@ -10,14 +10,17 @@
 import LoginBox from '@/components/login/LoginBox.vue';
 import {login, user} from '@/api';
 import store from '@/store';
-import router from '@/router';
+import { useRoute, useRouter } from 'vue-router';
 
 export default {
   name: 'login',
   components: {
     LoginBox
   },
-  data() {
+  setup() {
+    const route = useRoute();
+    const router = useRouter();
+
     return {
       login: {
         login: async (loginName: string, password: string) => {
@@ -39,8 +42,14 @@ export default {
                 store.dispatch('user/setUser', data);
               });
               // 查询当前用户菜单
-
-              await router.push({path: '/index'});
+              if (route.query?.redirect) {
+                await router.push({
+                  path: <string>route.query?.redirect,
+                  query: Object.keys(<string>route.query?.params).length > 0 ? JSON.parse(<string>route.query?.params) : '',
+                });
+              } else {
+                await router.push('/index');
+              }
             }
             return data;
           });

@@ -1,20 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import {APP_TITLE} from '@/constant';
-import {routes, hasNecessaryRoute, initRouteList} from '@/router/route';
+import {INDEX} from '@/constant';
+import {defaultRoutes, routes, hasNecessaryRoute, initRouteList} from '@/router/route';
 import {auth} from '@/router/auth';
 import store from '@/store';
 
 const router = createRouter({
     history: createWebHistory(),
-    routes: [
-        {
-            path: '/',
-            name: '/',
-            redirect: import.meta.env.VITE_LOGIN_OPEN_INDEX as string,
-        }
-    ]
+    routes: defaultRoutes
 });
 
 /**
@@ -37,35 +31,43 @@ export function setFilterRouteEnd() {
 /**
  * 添加动态路由
  */
-export function setAddRoute() {
+export async function setAddRoute() {
     setFilterRouteEnd().forEach((route) => {
-        const routeName: any = route.name;
-        console.log("router.hasRoute("+routeName+")", router.hasRoute(routeName));
-        if (!router.hasRoute(routeName)) router.addRoute(route);
+        router.addRoute(route);
     });
-    console.log("routes",routes);
-    console.log("router",router);
 }
 
 /**提取路由添加到菜单中*/
-export function setMenuToStore() {
-    store.dispatch('routesList/setRoutesList', routes[0].children).then(r => {});
+export async function setMenuToStore() {
+    await store.dispatch("routeList/addAll", routes[0].children);
 }
 
 // 路由加载前
-router.beforeEach(async to => {
-    document.title = (title => {
-        return (!!title) ? (`${title} - ${APP_TITLE}`) : APP_TITLE;
-    })(!!to.meta && to.meta.title);
-    NProgress.start();
-    // 判断是否需要验证权限
-    if (to.meta.auth) {
-        if (await auth()) {
-            if (!hasNecessaryRoute(to)) {
-                await initRouteList();
+router.beforeEach(async (to, from, next) => {
+    NProgress.configure({showSpinner: false});
+    if (to.meta.title) NProgress.start();
+    const token = await auth();
+    if (to.path === '/login' && !token) {
+        next();
+        NProgress.done();
+    } else {
+        if (!token) {
+            if(to.path == '/'){
+                next('/login');
+            } else {
+                next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
             }
-        } else {
-            return import.meta.env.VITE_LOGIN;
+            NProgress.done();
+        } else if (token && to.path === '/login'){
+            next(INDEX);
+            NProgress.done();
+        }else {
+            if (!hasNecessaryRoute()) {
+                await initRouteList();
+                next({ ...to, replace: true });
+            }else {
+                next();
+            }
         }
     }
 });
