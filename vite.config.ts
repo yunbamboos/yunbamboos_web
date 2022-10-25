@@ -37,6 +37,27 @@ export default defineConfig(({ command, mode }) => {
                     rewrite: (path) => path.replace(/^\/api/, '')
                 }
             },
+        },
+        css:{
+            preprocessorOptions: {
+                scss: {
+                    charset: false
+                }
+            },
+            postcss: {
+                plugins: [
+                    {
+                        postcssPlugin: 'internal:charset-removal',
+                        AtRule: {
+                            charset: (atRule) => {
+                                if (atRule.name === 'charset') {
+                                    atRule.remove();
+                                }
+                            }
+                        }
+                    }
+                ],
+            }
         }
     };
 });

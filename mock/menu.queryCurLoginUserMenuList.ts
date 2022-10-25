@@ -21,7 +21,7 @@ export default [
                             hide: false,
                             keep_alive: true,
                             iframe: 'false',
-                            icon: 'iconfont icon-index'
+                            icon: 'home'
                         },
                         {
                             menu_id: '100011',
@@ -33,69 +33,7 @@ export default [
                             hide: false,
                             keep_alive: true,
                             iframe: 'false',
-                            icon: 'iconfont icon-index'
-                        },
-                        {
-                            menu_id: '101000',
-                            path: '/my/watch-history',
-                            name: 'watch-history',
-                            component: '/my/watch-history/index.vue',
-                            title: '观看历史',
-                            link: 'false',
-                            hide: false,
-                            keep_alive: true,
-                            iframe: 'false',
-                            icon: 'iconfont icon-index'
-                        },
-                        {
-                            menu_id: '102000',
-                            path: '/my/favorite',
-                            name: 'favorite',
-                            component: '/my/favorite/index.vue',
-                            title: '我的收藏',
-                            link: 'false',
-                            hide: false,
-                            keep_alive: true,
-                            iframe: 'false',
-                            icon: 'iconfont icon-index'
-                        },
-                        {
-                            menu_id: '103001',
-                            path: '/my/set',
-                            name: 'set',
-                            component: '/my/favorite/index.vue',
-                            title: '设置',
-                            link: 'false',
-                            hide: false,
-                            keep_alive: true,
-                            iframe: 'false',
-                            icon: 'iconfont icon-index',
-                            children:[{
-                                menu_id: '103001',
-                                path: '/my/set1',
-                                name: 'set1',
-                                component: '/my/favorite/index.vue',
-                                title: '设置1',
-                                link: 'false',
-                                hide: false,
-                                keep_alive: true,
-                                iframe: 'false',
-                                icon: 'iconfont icon-index',
-                                children:[
-                                    {
-                                        menu_id: '103002',
-                                        path: '/my/set2',
-                                        name: 'set2',
-                                        component: '/my/favorite/index.vue',
-                                        title: '设置2',
-                                        link: 'false',
-                                        hide: false,
-                                        keep_alive: true,
-                                        iframe: 'false',
-                                        icon: 'iconfont icon-index',
-                                    }
-                                ]
-                            }]
+                            icon: 'home'
                         }
                     ]
                 },

@@ -41,6 +41,7 @@ import store from '@/store';
 import Logo from '@/layout/component/logo.vue';
 import {Route} from "@/model";
 import SubItem from "@/layout/component/subItem.vue";
+import SvgIcon from "@/components/svg-icon/index.vue";
 import { useRoute, onBeforeRouteUpdate } from 'vue-router';
 
 interface StateType {
@@ -54,7 +55,8 @@ export default defineComponent({
   name: 'aside',
   components: {
     Logo,
-    SubItem
+    SubItem,
+    SvgIcon
   },
   setup() {
     const route = useRoute();

@@ -2,20 +2,20 @@
   <template v-for="menu in menuList">
     <el-sub-menu :index="menu.path" :key="menu.path" v-if="menu.children && menu.children.length > 0">
       <template #title>
-        <SvgIcon :name="menu.meta.icon" />
+        <SvgIcon :name="menu.meta.icon"/>
         <span>{{ menu.meta.title }}</span>
       </template>
-      <sub-item :children="menu.children" />
+      <sub-item :children="menu.children"/>
     </el-sub-menu>
     <template v-else>
       <el-menu-item :index="menu.path" :key="menu.path">
         <template v-if="!menu.meta.link || (menu.meta.link && menu.meta.iframe)">
-          <SvgIcon :name="menu.meta.icon" />
+          <SvgIcon :name="menu.meta.icon"/>
           <span>{{ menu.meta.title }}</span>
         </template>
         <template v-else>
           <a :href="menu.meta.link" target="_blank" rel="opener" class="w100">
-            <SvgIcon :name="menu.meta.icon" />
+            <SvgIcon :name="menu.meta.icon"/>
             {{ menu.meta.title }}
           </a>
         </template>
@@ -25,12 +25,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, reactive, toRefs} from 'vue';
-import {Route} from "@/model";
-
-interface StateType {
-  menuList: Array<Route>;
-}
+import {computed} from 'vue';
 
 export default {
   name: 'SubItem',
@@ -41,11 +36,11 @@ export default {
     },
   },
   setup(props) {
-    const state = reactive<StateType>({
-      menuList: props.children
+    const menuList = computed(() => {
+      return props.children;
     });
     return {
-      ...toRefs(state)
+      menuList
     };
   },
 }
