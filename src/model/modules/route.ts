@@ -4,7 +4,7 @@ export class Route {
     path?: string;
     component?: any;
     redirect?: any;
-    meta?: RouteMeta | any;
+    meta?: RouteMeta;
     children?: Array<Route>;
 }
 

@@ -1,5 +1,5 @@
 import {menu} from "@/api";
-import {Menu, Route} from "@/model";
+import {Menu, Route, RouteMeta} from "@/model";
 
 const layoutModules: any = import.meta.glob('../layout/routerView/*.{vue,tsx}');
 const viewsModules: any = import.meta.glob('../views/**/*.{vue,tsx}');
@@ -23,7 +23,13 @@ export function menuToRoute(menuList: Array<Menu>){
         route.menu_id = menu.menu_id;
         route.name = menu.name;
         route.path = menu.path;
-
+        route.meta = new RouteMeta();
+        route.meta.title = menu.title;
+        route.meta.link = menu.link;
+        route.meta.hide = menu.hide;
+        route.meta.cache = menu.cache;
+        route.meta.iframe = menu.iframe;
+        route.meta.icon = menu.icon;
         route.component = dynamicImport(dynamicViewsModules, menu.component);
         if (menu.children) {
             route.children = menuToRoute(menu.children)

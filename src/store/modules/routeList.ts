@@ -10,8 +10,8 @@ const getters = {
     length(state) {
         return state.list.length;
     },
-    test: () => () => {
-        return {a: 1}
+    getAll: (state) => () => {
+        return state.list;
     }
 };
 
@@ -20,8 +20,8 @@ const mutations = {
         state.list.push(route);
     },
     addAll(state, routes: Array<Route>) {
-        if(routes){
-            for (let i=0;i<routes.length;i++){
+        if (routes) {
+            for (let i = 0; i < routes.length; i++) {
                 state.list.push(routes[i]);
             }
         }

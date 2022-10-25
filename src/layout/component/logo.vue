@@ -1,7 +1,7 @@
 <template>
   <div class="layout-aside-logo">
     <div class="layout-aside-logo-image">
-      <el-image src="/images/logo.png" style="width: 45px; height: 45px;margin:0 auto;"></el-image>
+      <el-image src="/images/logo.png" style="width: 36px; height: 36px;margin:0 auto;"></el-image>
     </div>
     <div class="layout-aside-logo-text">
       电影推荐系统
