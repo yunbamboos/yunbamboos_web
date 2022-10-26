@@ -1,6 +1,10 @@
+// 统一认证信息
+export class Authorization {
+    // token
+    account_token: string;
+    refresh_token: string;
+}
 // 全局统一设置
-import {Authorization} from "@/model";
-
 export class Config {
     // 统一认证信息
     authorization: Authorization;
