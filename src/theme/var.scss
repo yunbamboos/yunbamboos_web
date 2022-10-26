@@ -1,19 +1,9 @@
 :root{
-  // 全局背景颜色
-  --layout-background-color: rgb(250, 248, 248);
-  // 侧边栏的宽度
+  // 侧边栏 宽度
   --layout-aside-width: 240px;
-  // 侧边栏的背景色
-  --layout-aside-background-color: transparent;
-  // 侧边栏 收缩后的宽度 同时logo容器的宽度
-  --layout-aside-logo-width: 64px;
-  // 侧边栏 logo 高度
-  --layout-aside-logo-height: 60px;
-  // 侧边栏 右边框宽度
+  // 侧边栏 边框
+  --layout-aside-border-color: #a2a2a2;
+  --layout-aside-border-top-width: 0px;
   --layout-aside-border-right-width: 1px;
-  // 侧边栏 边框颜色
-  --layout-aside-border-color: #e8e2e8;
-  // header 高度
-  --layout-header-height: 60px;
-  // #38bfd4
+
 }

@@ -38,7 +38,7 @@
 <script lang="ts">
 import {toRefs, reactive, defineComponent} from 'vue';
 import store from '@/store';
-import Logo from '@/layout/component/logo.vue';
+import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
 import SubItem from "@/layout/component/subItem.vue";
 import SvgIcon from "@/components/svg-icon/index.vue";
