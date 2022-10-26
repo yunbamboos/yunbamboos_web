@@ -1,5 +1,5 @@
 import {createStore, createLogger } from 'vuex';
-import {RootStoreTypes} from '@/model';
+import {Config, RouteList, User} from '@/model';
 
 const debug = import.meta.env.ViTE_LOG;
 
@@ -16,6 +16,12 @@ const modules = pathList.reduce((modules: { [x: string]: any }, modulePath: stri
     modules[moduleName] = value.default;
     return modules;
 }, {});
+
+export class RootStoreTypes {
+    config: Config;
+    routeList: RouteList;
+    user: User;
+}
 
 export default createStore<RootStoreTypes>({
     modules,
