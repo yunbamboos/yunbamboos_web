@@ -1,7 +1,7 @@
 <template>
   <div class="layout-aside-logo">
     <div class="layout-aside-logo-image">
-      <el-image src="/images/logo.png" style="width: 36px; height: 36px;margin:0 auto;"></el-image>
+      <svg-icon name="logo" size="36" color="#409eff" style="margin: 0 auto" ></svg-icon>
     </div>
     <div class="layout-aside-logo-text">
       电影推荐系统
@@ -11,9 +11,12 @@
 
 <script lang="ts">
 import {APP_TITLE} from "@/constant";
-
+import SvgIcon from "@/components/svg-icon/index.vue";
 export default {
   name: "logo",
+  components:{
+    SvgIcon
+  },
   data(){
     return {
       title: APP_TITLE

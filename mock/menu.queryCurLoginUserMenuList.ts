@@ -33,7 +33,7 @@ export default [
                             hide: false,
                             keep_alive: true,
                             iframe: 'false',
-                            icon: 'home'
+                            icon: 'attention'
                         }
                     ]
                 },

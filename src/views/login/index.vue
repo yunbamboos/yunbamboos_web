@@ -1,8 +1,6 @@
 <template>
-  <div class="main-container">
-    <div class="login-container">
-      <LoginBox :login="login"/>
-    </div>
+  <div class="login-container">
+    <LoginBox :login="login"/>
   </div>
 </template>
 
@@ -10,7 +8,7 @@
 import LoginBox from '@/components/login/LoginBox.vue';
 import {login, user} from '@/api';
 import store from '@/store';
-import { useRoute, useRouter } from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 
 export default {
   name: 'login',
