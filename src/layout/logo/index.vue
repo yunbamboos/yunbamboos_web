@@ -1,7 +1,7 @@
 <template>
   <div class="layout-aside-logo">
     <div class="layout-aside-logo-image">
-      <svg-icon name="logo" size="36" color="#409eff" style="margin: 0 auto" ></svg-icon>
+      <SvgIcon name="logo" size="36" color="#409eff" style="margin: 0 auto" ></SvgIcon>
     </div>
     <div class="layout-aside-logo-text">
       电影推荐系统

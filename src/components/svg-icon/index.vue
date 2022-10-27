@@ -18,8 +18,8 @@ export default {
     },
     // svg 大小
     size: {
-      type: Number,
-      default: () => 16,
+      type: String,
+      default: () => '16',
     },
     // svg 颜色
     color: {

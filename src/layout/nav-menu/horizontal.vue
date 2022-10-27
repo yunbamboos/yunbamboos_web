@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "horizontal"
+  name: "NavMenuHorizontal"
 }
 </script>
 

@@ -37,9 +37,9 @@ import {toRefs, reactive, defineComponent} from 'vue';
 import store from '@/store';
 import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
-import SubItem from "@/layout/component/subItem.vue";
+import SubItem from "@/layout/nav-menu/subItem.vue";
 import SvgIcon from "@/components/svg-icon/index.vue";
-import {useRoute, onBeforeRouteUpdate} from 'vue-router';
+import {useRoute} from 'vue-router';
 
 interface StateType {
   collapse: boolean;
@@ -48,7 +48,7 @@ interface StateType {
   menuList: Array<Route>;
 }
 
-export default {
+export default defineComponent({
   name: "NavMenuVertical",
   components: {
     Logo,
@@ -74,5 +74,5 @@ export default {
       ...toRefs(state)
     };
   }
-}
+});
 </script>

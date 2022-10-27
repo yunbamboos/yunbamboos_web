@@ -28,7 +28,7 @@
 import {computed} from 'vue';
 
 export default {
-  name: 'SubItem',
+  name: 'NavMenuSubItem',
   props: {
     children: {
       type: Array,

@@ -13,7 +13,7 @@ import NavMenuVertical from '@/layout/nav-menu/vertical.vue';
  * 侧边栏
  * */
 export default defineComponent({
-  name: 'aside',
+  name: 'LayoutAside',
   components: {
     Logo,
     NavMenuVertical
