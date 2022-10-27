@@ -1,14 +1,16 @@
 <template>
-  <div class="layout-aside">
+  <el-aside class="layout-aside" :style="getLayoutAsidesStyle">
     <Logo/>
     <NavMenuVertical/>
-  </div>
+  </el-aside>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {computed, defineComponent} from 'vue';
 import Logo from '@/layout/logo/index.vue';
 import NavMenuVertical from '@/layout/nav-menu/vertical.vue';
+import store from "@/store";
+
 /**
  * 侧边栏
  * */
@@ -17,6 +19,21 @@ export default defineComponent({
   components: {
     Logo,
     NavMenuVertical
+  },
+  setup() {
+
+    const getLayoutAsidesStyle = computed(() => {
+      let collapse = store.getters['config/getConfig']("collapse", "setting");
+      if (collapse) {
+        return `--el-aside-width:64px;`;
+      } else {
+        return '--el-aside-width:var(--layout-aside-width)';
+      }
+    });
+
+    return {
+      getLayoutAsidesStyle,
+    }
   }
 });
 </script>

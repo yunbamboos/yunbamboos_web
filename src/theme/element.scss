@@ -1,0 +1,5 @@
+// 默认样式修改
+.el-menu {
+  --el-menu-text-color: var(--layout-aside-menu-text-color) !important;
+  border-right: none !important;
+}

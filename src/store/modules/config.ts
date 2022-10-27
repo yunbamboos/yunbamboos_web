@@ -2,7 +2,19 @@ import {Config} from '@/model';
 import {Session} from '@/utils/storage';
 
 const state = (): Config => ({
+    layout: 'defaults',
+    // 界面设置
+    setting:{
+        // 是否开启菜单水平折叠效果
+        collapse: false,
+        // 是否开启菜单手风琴效果
+        uniqueOpened: true,
+        // 是否开启固定 Header
+        fixedHeader: false,
+    },
+    // 显示设置
     display: {
+        //是否显示logo
         logo: true
     }
 });

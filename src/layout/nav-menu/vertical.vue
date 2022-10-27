@@ -1,10 +1,11 @@
 <template>
   <el-scrollbar class="layout-aside-menu">
     <el-menu router
-             :collapse="collapse"
+             :collapse="getCollapse"
              :default-active="defaultActive"
              :unique-opened="unique_opened"
-             background-color="transparent">
+             background-color="transparent"
+             :collapse-transition="false">
       <template v-for="menu in menuList">
         <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0" :key="menu.path">
           <template #title>
@@ -15,13 +16,12 @@
         </el-sub-menu>
         <template v-else>
           <el-menu-item :index="menu.path" :key="menu.path">
+            <SvgIcon :name="menu.meta.icon"/>
             <template #title v-if="!menu.meta.link || (menu.meta.link && menu.meta.iframe)">
-              <SvgIcon :name="menu.meta.icon"/>
-              {{ menu.meta.title }}
+              <span>{{ menu.meta.title }}</span>
             </template>
             <template #title v-else>
               <a :href="menu.meta.link" target="_blank" rel="opener" class="w100">
-                <SvgIcon :name="menu.meta.icon"/>
                 {{ menu.meta.title }}
               </a>
             </template>
@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import {toRefs, reactive, defineComponent} from 'vue';
+import {toRefs, reactive, defineComponent, computed} from 'vue';
 import store from '@/store';
 import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
@@ -42,7 +42,6 @@ import SvgIcon from "@/components/svg-icon/index.vue";
 import {useRoute} from 'vue-router';
 
 interface StateType {
-  collapse: boolean;
   defaultActive: string;
   unique_opened: boolean;
   menuList: Array<Route>;
@@ -58,11 +57,14 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const state = reactive<StateType>({
-      collapse: false,
       defaultActive: route.path,
       unique_opened: true,
       menuList: []
     });
+    const getCollapse = computed(() => {
+      return store.getters['config/getConfig']("collapse", "setting");
+    });
+
     let routeList = store.getters['routeList/getAll']();
     for (let i = 0; i < routeList.length; i++) {
       let route = routeList[i];
@@ -71,7 +73,8 @@ export default defineComponent({
       }
     }
     return {
-      ...toRefs(state)
+      ...toRefs(state),
+      getCollapse
     };
   }
 });
