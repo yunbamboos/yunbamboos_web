@@ -13,14 +13,14 @@ const service = axios.create({
 // 拦截请求
 service.interceptors.request.use(
     config => {
-        const authorization = store.getters['config/getAuthorization']();
-        if (authorization && authorization.token) {
-            config.headers[TOKEN] = authorization.token
+        const accountToken = store.getters['token/getAccountToken']();
+        if (accountToken) {
+            config.headers[TOKEN] = accountToken;
         }
-        return config
+        return config;
     },
     error => {
-        return Promise.reject(error)
+        return Promise.reject(error);
     }
 )
 

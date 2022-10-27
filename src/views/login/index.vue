@@ -18,7 +18,6 @@ export default {
   setup() {
     const route = useRoute();
     const router = useRouter();
-
     return {
       login: {
         login: async (loginName: string, password: string) => {
@@ -28,16 +27,13 @@ export default {
           }).then(async (data) => {
             if (data.code == 200) {
               // 设置登录信息
-              await store.dispatch('config/setConfig', {
-                key: 'authorization',
-                value: {
+              await store.dispatch('token/setToken', {
                   account_token: data.data.token.account_token,
                   refresh_token: data.data.token.refresh_token
-                }
               });
               // 查询当前登录用户信息
               await user.queryCurLoginUser().then(data => {
-                store.dispatch('user/setUser', data);
+                store.dispatch('user/setUser', data.data.user);
               });
               // 查询当前用户菜单
               if (route.query?.redirect) {

@@ -1,7 +1,7 @@
 import {createStore, createLogger } from 'vuex';
-import {Config, RouteList, User} from '@/model';
+import {Token, Config, RouteList, User} from '@/model';
 
-const debug = import.meta.env.ViTE_LOG;
+const debug = import.meta.env.VITE_LOG;
 
 const modulesFiles = import.meta.globEager('./modules/*.ts');
 const pathList: string[] = [];
@@ -18,6 +18,7 @@ const modules = pathList.reduce((modules: { [x: string]: any }, modulePath: stri
 }, {});
 
 export class RootStoreTypes {
+    token: Token;
     config: Config;
     routeList: RouteList;
     user: User;

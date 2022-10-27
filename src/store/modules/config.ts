@@ -1,15 +1,10 @@
 import {Config} from '@/model';
 import {Session} from '@/utils/storage';
 
-const attrs = ["authorization", "fixedHeader", "headerHeight"];
+const attrs = ["logo"];
 
 const state = (): Config => ({
-    authorization: {
-        account_token: "",
-        refresh_token: ""
-    },
-    fixedHeader: false,
-    headerHeight: '60px'
+    logo: true,
 });
 
 const getters = {

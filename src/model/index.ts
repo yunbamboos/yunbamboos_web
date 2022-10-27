@@ -1,4 +1,5 @@
-import {Authorization, Config} from "@/model/modules/config";
+// 用户配置
+import {Config} from "@/model/modules/config";
 // token
 import {Token} from "@/model/modules/token";
 // 用户信息
@@ -9,7 +10,6 @@ import {Menu} from "@/model/modules/menu";
 import {Route, RouteMeta, RouteList} from "@/model/modules/route";
 
 export {
-    Authorization,
     Config,
     User,
     Token,
