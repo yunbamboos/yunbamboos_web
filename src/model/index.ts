@@ -1,18 +1,16 @@
-import {Authorization} from "@/model/modules/authorization";
-import {Config} from "@/model/modules/config";
-import {RootStoreTypes} from "@/model/modules/rootStoreTypes";
+import {Authorization, Config} from "@/model/modules/config";
+// token
 import {Token} from "@/model/modules/token";
+// 用户信息
 import {User} from "@/model/modules/user";
 // 菜单
 import {Menu} from "@/model/modules/menu";
 // 路由
 import {Route, RouteMeta, RouteList} from "@/model/modules/route";
 
-
 export {
     Authorization,
     Config,
-    RootStoreTypes,
     User,
     Token,
     Menu,
