@@ -1,12 +1,12 @@
 <template>
   <el-aside class="layout-aside" :style="getLayoutAsidesStyle">
-    <Logo/>
+    <Logo v-show="getShowLogo"/>
     <NavMenuVertical/>
   </el-aside>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent} from 'vue';
+import {defineComponent} from 'vue';
 import Logo from '@/layout/logo/index.vue';
 import NavMenuVertical from '@/layout/nav-menu/vertical.vue';
 import store from "@/store";
@@ -20,19 +20,17 @@ export default defineComponent({
     Logo,
     NavMenuVertical
   },
-  setup() {
-
-    const getLayoutAsidesStyle = computed(() => {
+  computed:{
+    getShowLogo: function (){
+      return store.getters['config/getConfig']("logo", "display");
+    },
+    getLayoutAsidesStyle: ()=>{
       let collapse = store.getters['config/getConfig']("collapse", "setting");
       if (collapse) {
-        return `--el-aside-width:64px;`;
+        return `--el-aside-width:var(--layout-aside-collapse-width);`;
       } else {
         return '--el-aside-width:var(--layout-aside-width)';
       }
-    });
-
-    return {
-      getLayoutAsidesStyle,
     }
   }
 });
