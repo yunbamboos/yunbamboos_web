@@ -1,15 +1,14 @@
 <template>
-  <div class="layout-logo" v-if="setShowLogo" :style="getLayoutLogoStyle" @click="onThemeConfigChange">
-    <SvgIcon name="logo" size="36" color="#409eff" class="layout-logo-medium-img"></SvgIcon>
+  <div class="layout-logo" v-if="getCollapse" :style="getLayoutLogoStyle" @click="onThemeConfigChange">
+    <SvgIcon name="logo" size="36" class="layout-logo-medium-img"></SvgIcon>
     <span>{{ title }}</span>
   </div>
   <div class="layout-logo-size" v-else @click="onThemeConfigChange">
-    <SvgIcon name="logo" size="36" color="#409eff" class="layout-logo-medium-img"></SvgIcon>
+    <SvgIcon name="logo" size="36" class="layout-logo-medium-img"></SvgIcon>
   </div>
 </template>
 
 <script lang="ts">
-import {computed} from "vue";
 import {APP_TITLE} from "@/constant";
 import SvgIcon from "@/components/svg-icon/index.vue";
 import store from '@/store';
@@ -20,34 +19,32 @@ export default {
     SvgIcon
   },
   setup() {
-    // 设置 logo 的显示
-    const setShowLogo = computed(() => {
+    return {
+      title: APP_TITLE,
+    }
+  },
+  computed: {
+    // 获取侧边栏 展开关闭状态
+    getCollapse() {
       return !store.getters['config/getConfig']("collapse", "setting");
-    });
-
-    const getLayoutLogoStyle = computed(() => {
+    },
+    getLayoutLogoStyle() {
       let collapse = store.getters['config/getConfig']("collapse", "setting");
       if (collapse) {
-        return `--layout-logo-width:64px;`;
+        return `--layout-logo-width:var(--layout-aside-collapse-width);`;
       } else {
         return `--layout-logo-width:var(--layout-aside-width);`;
       }
-    });
-
-    // 点击logo实现菜单展开/收起
-    const onThemeConfigChange = () => {
+    }
+  },
+  methods: {
+    onThemeConfigChange() {
       let collapse = store.getters['config/getConfig']("collapse", "setting");
       store.dispatch('config/setConfig', {
         group: 'setting',
         key: 'collapse',
         value: !collapse
       });
-    };
-    return {
-      title: APP_TITLE,
-      setShowLogo,
-      getLayoutLogoStyle,
-      onThemeConfigChange
     }
   }
 }
@@ -57,11 +54,11 @@ export default {
 .layout-logo {
   width: var(--layout-logo-width);
   height: var(--layout-logo-height);
+  color: var(--el-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: rgb(0 21 41 / 2%) 0 1px 4px;
-  color: var(--el-color-primary);
   font-size: 16px;
   cursor: pointer;
   animation: logoAnimation 0.3s ease-in-out;
@@ -86,6 +83,7 @@ export default {
 .layout-logo-size {
   width: 100%;
   height: var(--layout-logo-height);
+  color: var(--el-color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
