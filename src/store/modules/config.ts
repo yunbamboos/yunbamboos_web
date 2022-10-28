@@ -2,6 +2,11 @@ import {Config} from '@/model';
 import {Session} from '@/utils/storage';
 
 const state = (): Config => ({
+    // 默认 primary 主题颜色
+    primary: '#38BFD4',
+    // 是否开启深色模式
+    dark: false,
+    // 布局切换
     layout: 'defaults',
     // 界面设置
     setting:{
@@ -16,7 +21,11 @@ const state = (): Config => ({
     display: {
         //是否显示logo
         logo: true
-    }
+    },
+    // 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
+    globalI18n: 'zh-cn',
+    // 默认全局组件大小，可选值"<large|'default'|small>"，默认 'large'
+    globalComponentSize: 'large',
 });
 
 const getters = {

@@ -16,10 +16,18 @@ class Display {
 
 /**全局统一设置*/
 export class Config {
+    // 默认 primary 主题颜色
+    primary: string;
+    // 是否开启深色模式
+    dark: boolean;
     // 布局切换：可选值"<defaults|classic|transverse|columns>"，默认 defaults
     layout: string;
     // 界面设置
     setting: Setting;
     // 显示设置
     display: Display;
+    // 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
+    globalI18n: string;
+    // 默认全局组件大小，可选值"<large|'default'|small>"，默认 'large'
+    globalComponentSize: string;
 }

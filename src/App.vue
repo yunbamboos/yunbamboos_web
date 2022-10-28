@@ -1,5 +1,7 @@
 <template>
-  <router-view></router-view>
+  <el-config-provider :message="message">
+    <router-view></router-view>
+  </el-config-provider>
 </template>
 <script lang="ts">
 import {defineComponent, nextTick} from 'vue';
@@ -9,13 +11,18 @@ import {Session} from '@/utils/storage';
 
 export default defineComponent({
   name: 'app',
-  setup() {
-    return {};
+  data() {
+    return {
+      message:{ // 消息弹框最多3个
+        max: 3
+      }
+    };
   },
+
   watch: {
     // 监听路由变化 修改网页标题
     '$route.path': {
-      handler () {
+      handler() {
         tool.useTitle();
       },
       immediate: true
