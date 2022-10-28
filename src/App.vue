@@ -2,25 +2,34 @@
   <router-view></router-view>
 </template>
 <script lang="ts">
-import {watch} from 'vue';
+import {defineComponent, nextTick} from 'vue';
 import tool from '@/utils/tool';
-import { useRoute } from 'vue-router';
+import store from '@/store';
+import {Session} from '@/utils/storage';
 
-export default {
+export default defineComponent({
   name: 'app',
   setup() {
-    // 监听路由的变化，设置网站标题
-    const route = useRoute();
-    watch(
-        () => route.path, () => {
-          tool.useTitle();
-        },
-        {
-          deep: true
-        }
-    );
     return {};
+  },
+  watch: {
+    // 监听路由变化 修改网页标题
+    '$route.path': {
+      handler () {
+        tool.useTitle();
+      },
+      immediate: true
+    }
+  },
+  mounted: function () {
+    nextTick(() => {
+      // 获取缓存中的布局配置
+      if (Session.get('config')) {
+        store.dispatch('config/setConfigFromSession');
+        //document.documentElement.style.cssText = Session.get('themeConfigStyle');
+      }
+    });
   }
-}
+});
 </script>
 

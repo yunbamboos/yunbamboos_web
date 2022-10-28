@@ -4,7 +4,7 @@
 <script lang="ts">
 import {onBeforeMount, onUnmounted, getCurrentInstance, defineComponent, defineAsyncComponent} from 'vue';
 import store from '@/store';
-import {Local} from '@/utils/storage';
+import {Session} from '@/utils/storage';
 
 export default defineComponent({
   name: 'Layout',
@@ -19,7 +19,7 @@ export default defineComponent({
     const layout = store.getters['config/getConfig']('layout');
     // 窗口大小改变时执行
     const onLayoutResize = () => {
-      if (!Local.get('oldLayout')) Local.set('oldLayout', layout);
+      if (!Session.get('oldLayout')) Session.set('oldLayout', layout);
       const clientWidth = document.body.clientWidth;
       if (clientWidth < 1000) {
         store.dispatch('config/setConfig', {
@@ -31,7 +31,7 @@ export default defineComponent({
         });
       } else {
         proxy.mittBus.emit('layoutMobileResize', {
-          layout: Local.get('oldLayout') ? Local.get('oldLayout') : layout,
+          layout: Session.get('oldLayout') ? Session.get('oldLayout') : layout,
           clientWidth,
         });
       }

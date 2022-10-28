@@ -20,11 +20,11 @@ export default defineComponent({
     Logo,
     NavMenuVertical
   },
-  computed:{
-    getShowLogo: function (){
+  computed: {
+    getShowLogo: () => {
       return store.getters['config/getConfig']("logo", "display");
     },
-    getLayoutAsidesStyle: ()=>{
+    getLayoutAsidesStyle: () => {
       let collapse = store.getters['config/getConfig']("collapse", "setting");
       if (collapse) {
         return `--el-aside-width:var(--layout-aside-collapse-width);`;

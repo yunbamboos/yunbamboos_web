@@ -40,8 +40,45 @@ body,
     flex-direction: column;
     overflow-x: hidden !important;
     transition: max-height 5s ease-in;
+
     .el-scrollbar__view {
       overflow: hidden;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-auto {
+  flex: 1;
+  overflow: hidden;
+}
+
+.flex-center {
+  @extend .flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.flex-margin {
+  margin: auto;
+}
+
+.flex-warp {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin: 0 -5px;
+
+  .flex-warp-item {
+    padding: 5px;
+
+    .flex-warp-item-box {
+      width: 100%;
+      height: 100%;
     }
   }
 }

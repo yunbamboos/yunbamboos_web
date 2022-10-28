@@ -2,7 +2,7 @@ export default [
     {
         url: '/api/menu/queryCurLoginUserMenuList',
         method: 'post',
-        timeout: 100,
+        timeout: 1000,
         statusCode: 200,
         response: () => {
             // 响应内容

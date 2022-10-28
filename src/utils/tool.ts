@@ -6,10 +6,14 @@ import {APP_TITLE} from "@/constant";
  */
 export function useTitle() {
     nextTick(() => {
-        const {path, meta} = router.currentRoute.value;
+        const {meta} = router.currentRoute.value;
         let title = meta.title;
-        document.title = `${title} - ${APP_TITLE}`;
-    }).then(r =>{});
+        if(title){
+            document.title = `${title} - ${APP_TITLE}`;
+        } else {
+            document.title = `${APP_TITLE}`;
+        }
+    }).then(() =>{});
 }
 
 const other = {
