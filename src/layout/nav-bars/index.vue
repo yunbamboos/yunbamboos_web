@@ -1,5 +1,9 @@
 <template>
   <div class="layout-navbars-container">
+    // 展开收缩按钮
+    // logo
+    // 面包屑导航
+    // 用户信息
   </div>
 </template>
 
