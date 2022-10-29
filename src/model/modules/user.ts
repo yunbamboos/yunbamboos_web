@@ -4,3 +4,10 @@ export class User {
     image_id: number;
 }
 
+export class UserConfig {
+    user_id: string;
+    group: string;
+    key: number;
+    value: any;
+}
+

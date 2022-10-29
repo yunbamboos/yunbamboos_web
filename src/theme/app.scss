@@ -22,8 +22,7 @@ body,
   background-color: var(--next-bg-main-color);
   font-size: 14px;
   overflow: hidden;
-  display: flex;
-  flex-direction: row;
+  position: relative;
 }
 
 .layout-container {

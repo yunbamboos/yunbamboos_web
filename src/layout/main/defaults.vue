@@ -5,6 +5,7 @@
       <LayoutHeader v-show="getFixedHeader" />
       <el-scrollbar>
         <LayoutHeader v-show="!getFixedHeader" />
+        <router-view></router-view>
       </el-scrollbar>
     </el-container>
   </el-container>

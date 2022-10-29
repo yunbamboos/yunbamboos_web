@@ -1,5 +1,5 @@
 import {createStore, createLogger } from 'vuex';
-import {Token, Config, RouteList, User} from '@/model';
+import {Token, Config, RouteList, User, MenuList} from '@/model';
 
 const debug = import.meta.env.VITE_LOG;
 
@@ -22,6 +22,7 @@ export class RootStoreTypes {
     config: Config;
     routeList: RouteList;
     user: User;
+    menuList: MenuList;
 }
 
 export default createStore<RootStoreTypes>({

@@ -1,5 +1,6 @@
 import {User} from '@/model';
 import {Session} from "@/utils/storage";
+import {user} from "@/api";
 
 
 const state = (): User => ({
@@ -30,9 +31,16 @@ const actions = {
             commit('setUser', user);
         }
     },
-    setUser({commit}, user:User) {
-        commit('setUser', user);
-    }
+    queryCurLoginUser({commit}) {
+        return user.queryCurLoginUser().then(result => {
+            if (result.code == 200) {
+                commit('setUser', result.data.user);
+                return Promise.resolve(true);
+            } else {
+                return Promise.reject(result.msg);
+            }
+        });
+    },
 }
 
 

@@ -1,5 +1,6 @@
-import {Config} from '@/model';
+import {Config, UserConfig} from '@/model';
 import {Session} from '@/utils/storage';
+import {userConfig} from "@/api";
 
 const state = (): Config => ({
     // 默认 primary 主题颜色
@@ -9,7 +10,7 @@ const state = (): Config => ({
     // 布局切换
     layout: 'defaults',
     // 界面设置
-    setting:{
+    setting: {
         // 是否开启菜单水平折叠效果
         collapse: false,
         // 是否开启菜单手风琴效果
@@ -30,7 +31,7 @@ const state = (): Config => ({
 
 const getters = {
     getConfig: (state) => (key, group) => {
-        if(group){
+        if (group) {
             return state[group][key];
         }
         return state[key];
@@ -39,16 +40,16 @@ const getters = {
 
 const mutations = {
     setConfig(state, {group, key, value}) {
-        if(group){
-            if(!state[group]){
-                state[group]= {};
+        if (group) {
+            if (!state[group]) {
+                state[group] = {};
             }
             state[group][key] = value;
         } else {
             state[key] = value;
         }
     },
-    saveConfigToSession(state){
+    saveConfigToSession(state) {
         Session.set('config', state);
     }
 };
@@ -58,15 +59,15 @@ const actions = {
         let config = Session.get("config");
         if (config) {
             let attrs = Object.keys(config);
-            for(let i = 0; i < attrs.length; i++){
+            for (let i = 0; i < attrs.length; i++) {
                 let attr = attrs[i];
                 let value = config[attr];
-                if(value instanceof Object){
+                if (value instanceof Object) {
                     let keys = Object.keys(value);
-                    for(let k = 0; k < keys.length; k++){
+                    for (let k = 0; k < keys.length; k++) {
                         let key = keys[k];
                         commit('setConfig', {
-                            group:attr,
+                            group: attr,
                             key: key,
                             value: value[key]
                         });
@@ -83,6 +84,32 @@ const actions = {
     setConfig({commit}, {group, key, value}) {
         commit('setConfig', {group, key, value});
         commit('saveConfigToSession');
+    },
+    queryCurLoginUserConfig({commit}) {
+        return userConfig.queryCurLoginUserConfig().then(result => {
+            if (result.code == 200) {
+                let configList = result.data.user_config_list;
+                for (let i = 0; i < configList.length; i++) {
+                    let config = configList[i];
+                    if (config.group) {
+                         commit('setConfig', {
+                            group: config.group,
+                            key: config.key,
+                            value: config.value
+                        });
+                    } else {
+                        commit('setConfig', {
+                            key: config.key,
+                            value: config.value
+                        });
+                    }
+                }
+                commit('saveConfigToSession');
+                return Promise.resolve(true);
+            } else {
+                return Promise.reject(result.msg);
+            }
+        });
     }
 };
 

@@ -13,3 +13,6 @@ export class Menu {
     children: Array<Menu>;
 }
 
+export class MenuList {
+    list: Array<Menu>;
+}

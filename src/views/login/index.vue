@@ -23,10 +23,9 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 import {ElMessage} from 'element-plus';
-import {login, menu, user} from '@/api';
+import {login} from '@/api';
 
 import store from '@/store';
-import {useRoute, useRouter} from 'vue-router';
 
 export default defineComponent({
   name: 'login',
@@ -83,26 +82,49 @@ export default defineComponent({
       ElMessage.error(msg);
     },
     loadUserInfo() {
-      let jump = {user: false, config: false, menu: false};
-      // 加载用户信息
-      user.queryCurLoginUser().then(result => {
-        if(result.code == 200){
-          store.dispatch('user/setUser', result.data.user);
-        } else {
-          ElMessage.error(result.msg);
+      let that = this;
+      let route= this.$route;
+      let router= this.$router;
+      let jump = {
+        user: false, config: false, menu: false,
+        jump(type) {
+          this[type] = true;
+          if (this.user && this.config && this.menu) {
+            if (route.query?.redirect) {
+              router.push({
+                path: <string>route.query?.redirect,
+                query: Object.keys(<string>route.query?.params).length > 0 ? JSON.parse(<string>route.query?.params) : '',
+              });
+            } else {
+              router.push('/');
+            }
+            // 登录成功提示
+            // 关闭 loading
+            that.loading = true;
+            ElMessage.success('你好,登陆成功');
+            // 添加 loading，防止第一次进入界面时出现短暂空白
+            NextLoading.start();
+          }
         }
+      };
+      // 加载用户信息
+      store.dispatch('user/queryCurLoginUser').then(() => {
+        jump.jump('user');
+      }, msg => {
+        ElMessage.error(msg);
       });
       // 加载用户配置
-
-      // 加载用户菜单列表
-      menu.queryCurLoginUserMenuList().then(result => {
-        if(result.code == 200){
-          //store.dispatch('user/setUser', result.data.user);
-        } else {
-          ElMessage.error(result.msg);
-        }
+      store.dispatch('config/queryCurLoginUserConfig').then(() => {
+        jump.jump('config');
+      }, msg => {
+        ElMessage.error(msg);
       });
-      console.log(this);
+      // 加载用户菜单列表
+      store.dispatch('menuList/queryCurLoginUserMenuList').then(() => {
+        jump.jump('menu');
+      }, msg => {
+        ElMessage.error(msg);
+      });
     }
   }
 })
