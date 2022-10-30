@@ -10,9 +10,6 @@ import store from '@/store';
 
 import mitt from 'mitt';
 
-console.log("环境变量=>", import.meta.env);
-console.log("store=>", store.state);
-
 const app = createApp(App);
 app.use(router);
 app.use(store);
@@ -24,3 +21,7 @@ app.use(
 app.use(i18n);
 app.mount('#app');
 app.config.globalProperties.mittBus = mitt();
+
+console.log(app);
+console.log("环境变量=>", import.meta.env);
+console.log("store=>", store.state);

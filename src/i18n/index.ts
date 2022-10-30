@@ -17,6 +17,7 @@ const messages = {
     }
 }
 
+
 // 导出语言国际化
 export const i18n = createI18n({
     silentTranslationWarn: true,

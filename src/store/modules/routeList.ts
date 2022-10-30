@@ -1,5 +1,5 @@
 import {Route, RouteList} from '@/model';
-import {Session} from "@/utils/storage";
+
 // state
 const state = (): RouteList => ({
     list: []

@@ -3,15 +3,16 @@ import {ElMessage} from 'element-plus';
 import store from '@/store';
 import loading from '@/utils/loading';
 import {setAddRoute, setMenuToStore} from "@/router/index";
-import {getMenuFromService, menuToRoute} from "@/router/menuToRoute";
+import {menuToRoute} from "@/router/menuToRoute";
 import {Route} from "@/model";
+import {auth} from '@/router/auth';
 
 export const routes: Array<Route> = [
     {
         path: '/',
         name: '/',
         component: () => import('@/layout/index.vue'),
-        redirect: import.meta.env.VITE_INDEX as string,
+        redirect: import.meta.env.VITE_HOME,
         meta: {
             title: '', // 标题
             link: '', // 外部链接地址
@@ -20,22 +21,7 @@ export const routes: Array<Route> = [
             iframe: false, // 独立界面
             icon: '' // 图标
         },
-        children: [
-            {
-                menu_id: '1',
-                path: "/index",
-                name: 'index',
-                component: () => import('@/views/index/index.vue'),
-                meta: {
-                    title: '首页', // 标题
-                    link: 'false', // 外部链接地址
-                    hide: false, // 隐藏菜单
-                    cache: true, // 保存组件
-                    iframe: false, // 独立界面
-                    icon: 'iconfont icon-index' // 图标
-                }
-            }
-        ]
+        children: []
     }
 ];
 
@@ -70,21 +56,32 @@ export function hasNecessaryRoute() {
 export async function initRouteList() {
     // 界面 loading 动画开始执行
     if (win.nextLoading === undefined) loading.start();
+    // 验证失败 停止执行下一步
+    if (!await auth()) return false;
     // 触发初始化用户信息
     await store.dispatch('user/setUserFromSession');
     // 获取菜单数据
-    const res = await getMenuFromService();
-    if (res.code !== 200) {
-        ElMessage.error("加载菜单失败");
-        return false;
-    }
+    const menus = await getMenu();
     // 处理路由（component），添加到routes（@/router/route）第一个顶级 children 的路由
-    routes[0].children = menuToRoute(res.data.menu_list);
+    routes[0].children = menuToRoute(menus);
     // 添加动态路由
     await setAddRoute();
     await setMenuToStore();
     loading.done();
 }
 
+export async function getMenu() {
+    let list = store.getters['menuList/getAll']();
+    if (list && list.length > 0) {
+        return list;
+    } else {
+        return await store.dispatch('menuList/queryCurLoginUserMenuList').then(list => {
+            return list;
+        }, msg => {
+            ElMessage.error("加载菜单失败: " + msg);
+            return [];
+        });
+    }
+}
 
 

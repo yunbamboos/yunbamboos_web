@@ -7,7 +7,7 @@ export class Menu {
     link: string;
     hide: boolean;
     cache: boolean;
-    iframe: string;
+    iframe: boolean;
     icon: string;
     parent_menu_id: string;
     children: Array<Menu>;

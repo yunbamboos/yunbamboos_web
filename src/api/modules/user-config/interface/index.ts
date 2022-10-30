@@ -10,7 +10,7 @@ export namespace Result {
         code: number;
         msg: string;
         data: {
-            user_configs: Array<UserConfig>
+            user_config_list: Array<UserConfig>
         }
     }
 }

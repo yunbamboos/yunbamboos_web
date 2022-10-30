@@ -10,7 +10,7 @@
         <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0" :key="menu.path">
           <template #title>
             <SvgIcon :name="menu.meta.icon"/>
-            <span>{{ menu.meta.title }}</span>
+            <span>{{ $t(menu.meta.title) }}</span>
           </template>
           <SubItem :children="menu.children"/>
         </el-sub-menu>
@@ -18,11 +18,11 @@
           <el-menu-item :index="menu.path" :key="menu.path">
             <SvgIcon :name="menu.meta.icon"/>
             <template #title v-if="!menu.meta.link || (menu.meta.link && menu.meta.iframe)">
-              <span>{{ menu.meta.title }}</span>
+              <span>{{ $t(menu.meta.title) }}</span>
             </template>
             <template #title v-else>
               <a :href="menu.meta.link" target="_blank" rel="opener" class="w100">
-                {{ menu.meta.title }}
+                {{ $t(menu.meta.title) }}
               </a>
             </template>
           </el-menu-item>

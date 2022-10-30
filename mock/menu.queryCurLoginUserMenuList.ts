@@ -13,10 +13,10 @@ export default [
                     menu_list: [
                         {
                             menu_id: '100000',
-                            path: '/index',
-                            name: 'index',
-                            component: '/index/index.vue',
-                            title: '首页',
+                            path: '/home',
+                            name: 'home',
+                            component: '/home/index.vue',
+                            title: 'menu.home',
                             link: 'false',
                             hide: false,
                             keep_alive: true,
@@ -28,7 +28,7 @@ export default [
                             path: '/my/attention',
                             name: 'attention',
                             component: '/my/attention/index.vue',
-                            title: '关注',
+                            title: 'menu.attention',
                             link: 'false',
                             hide: false,
                             keep_alive: true,

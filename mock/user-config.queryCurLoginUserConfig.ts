@@ -2,7 +2,7 @@ export default [
     {
         url: '/api/user-config/queryCurLoginUserConfig',
         method: 'post',
-        timeout: 2001,
+        timeout: 1000,
         statusCode: 200,
         response: () => {
             // 响应内容

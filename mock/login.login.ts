@@ -2,7 +2,7 @@ export default [
     {
         url: '/api/login/login',
         method: 'post',
-        timeout: 100,
+        timeout: 1000,
         statusCode: 200,
         response: ({body}) => {
             // 响应内容

@@ -1,4 +1,3 @@
-import {menu} from "@/api";
 import {Menu, Route, RouteMeta} from "@/model";
 
 const layoutModules: any = import.meta.glob('../layout/routerView/*.{vue,tsx}');
@@ -7,11 +6,6 @@ const viewsModules: any = import.meta.glob('../views/**/*.{vue,tsx}');
  * 获取目录下的 .vue、.tsx 全部文件
  */
 const dynamicViewsModules: Record<string, Function> = Object.assign({}, {...layoutModules}, {...viewsModules});
-
-/**加载菜单服务*/
-export async function getMenuFromService() {
-    return menu.queryCurLoginUserMenuList();
-}
 
 /**
  * 菜单Menu转换路由Route

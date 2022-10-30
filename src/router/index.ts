@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
-import {INDEX} from '@/constant';
+import {HOME, LOGIN} from '@/constant';
 import {defaultRoutes, routes, hasNecessaryRoute, initRouteList} from '@/router/route';
 import {auth} from '@/router/auth';
 import store from '@/store';
@@ -47,19 +47,20 @@ router.beforeEach(async (to, from, next) => {
     NProgress.configure({showSpinner: false});
     if (to.meta.title) NProgress.start();
     const token = await auth();
-    if (to.path === '/login' && !token) {
+    if (to.path === LOGIN && !token) {
         next();
         NProgress.done();
     } else {
         if (!token) {
-            if(to.path == '/'){
-                next('/login');
+            if(to.path == '/'||to.path == HOME){
+                next(LOGIN);
             } else {
-                next(`/login?redirect=${to.path}&params=${JSON.stringify(to.query ? to.query : to.params)}`);
+                // 跳转参数 &params=${JSON.stringify(to.query ? to.query : to.params)}
+                next(`${LOGIN}?redirect=${to.path}`);
             }
             NProgress.done();
-        } else if (token && to.path === '/login'){
-            next(INDEX);
+        } else if (token && to.path === LOGIN){
+            next(HOME);
             NProgress.done();
         }else {
             if (!hasNecessaryRoute()) {

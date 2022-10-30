@@ -24,8 +24,8 @@
 import {defineComponent} from 'vue';
 import {ElMessage} from 'element-plus';
 import {login} from '@/api';
-
 import store from '@/store';
+import loading from '@/utils/loading';
 
 export default defineComponent({
   name: 'login',
@@ -93,7 +93,7 @@ export default defineComponent({
             if (route.query?.redirect) {
               router.push({
                 path: <string>route.query?.redirect,
-                query: Object.keys(<string>route.query?.params).length > 0 ? JSON.parse(<string>route.query?.params) : '',
+                //query: Object.keys(<string>route.query?.params).length > 0 ? JSON.parse(<string>route.query?.params) : '',
               });
             } else {
               router.push('/');
@@ -103,7 +103,7 @@ export default defineComponent({
             that.loading = true;
             ElMessage.success('你好,登陆成功');
             // 添加 loading，防止第一次进入界面时出现短暂空白
-            NextLoading.start();
+            loading.start();
           }
         }
       };

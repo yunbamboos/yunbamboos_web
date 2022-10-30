@@ -39,7 +39,7 @@ const actions = {
         return menu.queryCurLoginUserMenuList().then(result => {
             if (result.code == 200) {
                 commit('addAll', result.data.menu_list);
-                return Promise.resolve(true);
+                return Promise.resolve(result.data.menu_list);
             } else {
                 return Promise.reject(result.msg);
             }
