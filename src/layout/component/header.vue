@@ -1,6 +1,7 @@
 <template>
   <el-header class="layout-header" :style="getLayoutHeaderHeight">
     <LayoutNavBars/>
+
   </el-header>
 </template>
 
@@ -14,7 +15,9 @@ export default defineComponent({
   components: {LayoutNavBars},
   computed: {
     getLayoutHeaderHeight: () => {
-      return `--el-header-height:var(--layout-header-height)`;
+      return `--el-header-height:var(--layout-header-height);
+              --el-header-padding:var(--layout-header-padding);
+              `;
     }
   }
 });

@@ -45,6 +45,7 @@ export default {
               line-height:${props.size}px;
               margin-right: 5px;
               fill:currentColor;
+              display:inline-block;
               overflow: hidden;` + ((props?.color)?`color:${props.color}`:'');
     });
     return {

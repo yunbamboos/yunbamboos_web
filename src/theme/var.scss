@@ -14,12 +14,18 @@
   --layout-aside-bg: #545c64;
   --layout-aside-menu-text-color: #ffffff;
 
-  // 头部高度 高
+  // 头部高度 高 不包含标签栏高度
   --layout-header-height: 50px;
+  --layout-header-padding: 0;
   // 侧边栏 宽度
   --layout-aside-width: 220px;
   --layout-aside-collapse-width: 64px;
   // logo 宽高
   --layout-logo-width: var(--layout-aside-width);
   --layout-logo-height: var(--layout-header-height);
+
+  // 顶部标题
+  --layout-header-bar-color: #3f4042;
+  --layout-nav-bars-bg: #ffffff;
+  --layout-nav-bars-border-color-light: #f1f2f3;
 }
