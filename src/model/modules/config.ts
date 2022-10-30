@@ -12,6 +12,10 @@ class Setting {
 class Display {
     // 是否显示logo
     logo: boolean;
+    // 是否开启 breadcrumb，经典、横向布局不显示
+    breadcrumb: boolean;
+    // 是否开启 breadcrumb 图标
+    breadcrumbIcon: boolean;
 }
 
 /**全局统一设置*/

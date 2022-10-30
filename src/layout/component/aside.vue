@@ -1,6 +1,6 @@
 <template>
   <el-aside class="layout-aside" :style="getLayoutAsidesStyle">
-    <Logo v-show="getShowLogo"/>
+    <Logo v-if="getShowLogo"/>
     <NavMenuVertical/>
   </el-aside>
 </template>

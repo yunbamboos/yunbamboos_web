@@ -21,7 +21,11 @@ const state = (): Config => ({
     // 显示设置
     display: {
         //是否显示logo
-        logo: true
+        logo: true,
+        // 是否开启 breadcrumb，经典、横向布局不显示
+        breadcrumb: true,
+        // 是否开启 breadcrumb 图标
+        breadcrumbIcon: true,
     },
     // 默认初始语言，可选值"<zh-cn|en|zh-tw>"，默认 zh-cn
     globalI18n: 'zh-cn',

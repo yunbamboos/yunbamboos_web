@@ -2,9 +2,9 @@
   <el-container class="layout-container">
     <LayoutAside/>
     <el-container class="flex-center">
-      <LayoutHeader v-show="getFixedHeader" />
+      <LayoutHeader v-if="getFixedHeader" />
       <el-scrollbar>
-        <LayoutHeader v-show="!getFixedHeader" />
+        <LayoutHeader v-if="!getFixedHeader" />
         <router-view></router-view>
       </el-scrollbar>
     </el-container>
