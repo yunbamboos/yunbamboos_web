@@ -28,11 +28,11 @@ export default defineConfig(({ command, mode }) => {
             minify: 'terser' // 混淆器
         },
         server: {
-            host: '0.0.0.0',
+            host: '192.168.2.121',
             port: VITE_PORT,
             proxy: {
                 '/api': {
-                    target: 'http://192.168.2.121:3000',   //代理接口
+                    target: 'http://192.168.2.121:10001',   //代理接口
                     changeOrigin: true,
                     rewrite: (path) => path.replace(/^\/api/, '')
                 }
