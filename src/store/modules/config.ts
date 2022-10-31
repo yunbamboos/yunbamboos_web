@@ -44,7 +44,7 @@ const getters = {
 
 const mutations = {
     setConfig(state, {group, key, value}) {
-        if (group) {
+        if (group && group !== 'default') {
             if (!state[group]) {
                 state[group] = {};
             }
@@ -96,7 +96,7 @@ const actions = {
                 for (let i = 0; i < configList.length; i++) {
                     let config = configList[i];
                     if (config.group) {
-                         commit('setConfig', {
+                        commit('setConfig', {
                             group: config.group,
                             key: config.key,
                             value: config.value
