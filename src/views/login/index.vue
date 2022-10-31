@@ -71,8 +71,7 @@ export default defineComponent({
     loginSuccess(data) {
       // 设置token
       store.dispatch('token/setToken', {
-        account_token: data.token.account_token,
-        refresh_token: data.token.refresh_token
+        token_id: data.token.token_id
       }).then(() => {
         this.loadUserInfo();
       });

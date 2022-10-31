@@ -2,23 +2,18 @@ import {Token} from '@/model';
 import {Session} from '@/utils/storage';
 
 const state = (): Token => ({
-    account_token: '',
-    refresh_token: ''
+    token_id: '',
 });
 
 const getters = {
-    getAccountToken: (state) => () => {
-        return state.account_token;
-    },
-    getRefreshToken: (state) => () => {
-        return state.refresh_token;
+    getTokenId: (state) => () => {
+        return state.token_id;
     }
 };
 
 const mutations = {
     setToken(state, token: Token) {
-        state.account_token = token.account_token;
-        state.refresh_token = token.refresh_token;
+        state.token_id = token.token_id;
         Session.set('token', state);
     }
 };

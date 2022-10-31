@@ -13,9 +13,9 @@ const service = axios.create({
 // 拦截请求
 service.interceptors.request.use(
     config => {
-        const accountToken = store.getters['token/getAccountToken']();
-        if (accountToken) {
-            config.headers[TOKEN] = accountToken;
+        const tokenId = store.getters['token/getTokenId']();
+        if (tokenId) {
+            config.headers[TOKEN] = tokenId;
         }
         return config;
     },
