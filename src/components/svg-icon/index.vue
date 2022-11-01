@@ -1,13 +1,16 @@
 <template>
   <div :style="setIconImgOutStyle">
     <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" version="1.1" :width="getWidth" :height="getHeight">
-      <path :d="getIconName"></path>
+      <template v-for="icon in icons" key="icon.id">
+          <path v-if="icon.type === 'path'" :d="icon.d" :p-id="icon.id"></path>
+      </template>
     </svg>
   </div>
 </template>
 <script lang="ts">
-import {computed} from "vue";
-import {getPath} from "@/components/svg-icon";
+import {computed, reactive, toRefs, watch} from "vue";
+import {getPath} from "@/components/svg-icon/svg";
+
 
 export default {
   name: "home",
@@ -28,10 +31,12 @@ export default {
     },
   },
   setup(props) {
-    // 获取 icon 图标名称
-    const getIconName = computed(() => {
-      return getPath(props?.name);
+    const state = reactive({
+      icons: []
     });
+    // 获取 icon 图标名称
+    state.icons = getPath(props?.name);
+
     const getWidth = computed(() => {
       return props?.size;
     });
@@ -48,11 +53,16 @@ export default {
               display:inline-block;
               overflow: hidden;` + ((props?.color)?`color:${props.color}`:'');
     });
+    watch(props, (curr)=>{
+      if(curr){
+        state.icons = getPath(curr.name);
+      }
+    });
     return {
-      getIconName,
       getWidth,
       getHeight,
-      setIconImgOutStyle
+      setIconImgOutStyle,
+      ...toRefs(state)
     }
   }
 }

@@ -1,6 +1,6 @@
 export default {
     app:{
-      title: 'movie recommendation system'
+      title: 'movie recommend'
     },
     menu: {
         home: 'home',

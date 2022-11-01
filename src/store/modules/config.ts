@@ -71,7 +71,7 @@ const actions = {
                 for (let i = 0; i < configList.length; i++) {
                     let config = configList[i];
                     commit('setConfig', {
-                        key: config.key,
+                        key: config.attr,
                         value: config.value
                     });
                 }

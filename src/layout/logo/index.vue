@@ -1,7 +1,7 @@
 <template>
   <div class="layout-logo" v-if="getCollapse" :style="getLayoutLogoStyle" @click="onThemeConfigChange">
     <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
-    <span>{{ title }}</span>
+    <span>{{ $t(title) }}</span>
   </div>
   <div class="layout-logo-size" v-else @click="onThemeConfigChange">
     <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
