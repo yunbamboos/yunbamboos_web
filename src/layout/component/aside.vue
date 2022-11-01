@@ -22,10 +22,10 @@ export default defineComponent({
   },
   computed: {
     getShowLogo: () => {
-      return store.getters['config/getConfig']("logo", "display");
+      return store.getters['config/getConfig']("logo");
     },
     getLayoutAsidesStyle: () => {
-      let collapse = store.getters['config/getConfig']("collapse", "setting");
+      let collapse = store.getters['config/getConfig']("collapse");
       if (collapse) {
         return `--el-aside-width:var(--layout-aside-collapse-width);`;
       } else {

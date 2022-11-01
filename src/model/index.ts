@@ -3,7 +3,7 @@ import {Config} from "@/model/modules/config";
 // token
 import {Token} from "@/model/modules/token";
 // 用户信息
-import {User, UserConfig} from "@/model/modules/user";
+import {User, UserConfig, UserImage} from "@/model/modules/user";
 // 菜单
 import {Menu, MenuList} from "@/model/modules/menu";
 // 路由
@@ -11,7 +11,7 @@ import {Route, RouteMeta, RouteList} from "@/model/modules/route";
 
 export {
     Config,
-    User, UserConfig,
+    User, UserConfig, UserImage,
     Token,
     Menu, MenuList,
     Route, RouteMeta, RouteList

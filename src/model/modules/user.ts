@@ -1,13 +1,16 @@
 export class User {
-    user_id: string;
+    user_id: number;
     nick_name: string;
     image_id: number;
 }
 
 export class UserConfig {
-    user_id: string;
-    group: string;
-    key: number;
+    user_id: number;
+    attr: number;
     value: any;
 }
 
+export class UserImage {
+    user_id: number;
+    image: string;
+}

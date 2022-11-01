@@ -1,7 +1,7 @@
 <template>
   <el-dropdown :show-timeout="70" :hide-timeout="50">
 			<span class="layout-nav-bars-user-bar-link">
-        <UserAvatar/>
+        <UserAvatar :user_id="user.user_id"/>
 				{{ user.nick_name }}
 				<SvgIcon name="arrow" size="16" style="margin-left: 5px;margin-right: 5px;"/>
 			</span>
@@ -23,6 +23,11 @@ import {defineComponent, reactive, toRefs} from 'vue';
 import store from '@/store';
 import SvgIcon from '@/components/svg-icon/index.vue';
 import UserAvatar from '@/components/user-avatar/index.vue';
+import {Route, User} from "@/model";
+
+interface StateType {
+  user: User;
+}
 
 export default defineComponent({
   name: "UserBarUser",
@@ -31,7 +36,7 @@ export default defineComponent({
     UserAvatar
   },
   setup() {
-    const state = reactive({
+    const state = reactive<StateType>({
       user: store.getters['user/getUser'](),
     });
 
@@ -49,6 +54,7 @@ export default defineComponent({
   display: flex;
   align-items: center;
   white-space: nowrap;
+  margin-right: 5px;
 
   &-photo {
     border-radius: 100%;

@@ -11,14 +11,21 @@
   }
 }
 
-@keyframes layoutCollapseAnimation {
+/* 顶栏选中动画 过渡动画 */
+@keyframes selected {
   0% {
-    transform: scale(0);
-  }
-  80% {
     transform: scale(1.2);
   }
-  100% {
+  25% {
+    transform: scale(1);
+  }
+  50%{
+    transform: scale(0.5);
+  }
+  75%{
+    transform: scale(0.8);
+  }
+  100%{
     transform: scale(1);
   }
 }

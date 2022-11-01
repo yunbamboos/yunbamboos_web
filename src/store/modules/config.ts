@@ -34,10 +34,7 @@ const state = (): Config => ({
 });
 
 const getters = {
-    getConfig: (state) => (key, group) => {
-        if (group) {
-            return state[group][key];
-        }
+    getConfig: (state) => (key) => {
         return state[key];
     }
 };
