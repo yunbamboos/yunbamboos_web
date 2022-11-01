@@ -1,5 +1,6 @@
 <template>
   <div class="layout-nav-bars-user-bar">
+    <UserBarSize/>
     <UserBarLang/>
     <UserBarSearch/>
     <UserBarThemeSkin/>
@@ -17,6 +18,7 @@ import UserBarNotice from '@/layout/nav-bars/user/notice.vue';
 import UserBarThemeSkin from '@/layout/nav-bars/user/theme-skin.vue';
 import UserBarSearch from '@/layout/nav-bars/user/search.vue';
 import UserBarLang from '@/layout/nav-bars/user/lang.vue';
+import UserBarSize from '@/layout/nav-bars/user/size.vue';
 
 export default defineComponent({
   name: "LayoutNavBarsUserBar",
@@ -26,7 +28,8 @@ export default defineComponent({
     UserBarNotice,
     UserBarThemeSkin,
     UserBarSearch,
-    UserBarLang
+    UserBarLang,
+    UserBarSize
   }
 });
 </script>

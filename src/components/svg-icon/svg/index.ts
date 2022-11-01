@@ -13,6 +13,7 @@ import {search} from "@/components/svg-icon/svg/icon/search";
 import {lang_zh} from "@/components/svg-icon/svg/icon/lang_zh";
 import {lang_tw} from "@/components/svg-icon/svg/icon/lang_tw";
 import {lang_en} from "@/components/svg-icon/svg/icon/lang_en";
+import {size} from "@/components/svg-icon/svg/icon/size";
 
 const icon = {
     // logo
@@ -39,6 +40,7 @@ const icon = {
     'zh-cn': lang_zh,
     'zh-tw': lang_tw,
     'en': lang_en,
+    size: size,
 }
 
 export function getPath(name) {
