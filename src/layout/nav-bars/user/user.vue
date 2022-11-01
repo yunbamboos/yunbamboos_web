@@ -7,12 +7,9 @@
 			</span>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item command="/home">{{ $t('user.dropdown1') }}</el-dropdown-item>
-        <el-dropdown-item command="wareHouse">{{ $t('user.dropdown6') }}</el-dropdown-item>
-        <el-dropdown-item command="/personal">{{ $t('user.dropdown2') }}</el-dropdown-item>
-        <el-dropdown-item command="/404">{{ $t('user.dropdown3') }}</el-dropdown-item>
-        <el-dropdown-item command="/401">{{ $t('user.dropdown4') }}</el-dropdown-item>
-        <el-dropdown-item divided command="logOut">{{ $t('user.dropdown5') }}</el-dropdown-item>
+        <el-dropdown-item command="/home">{{ $t('user.bars.info.home') }}</el-dropdown-item>
+        <el-dropdown-item command="/personal">{{ $t('user.bars.info.personal') }}</el-dropdown-item>
+        <el-dropdown-item divided command="logOut">{{ $t('user.bars.info.log_out') }}</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
@@ -23,7 +20,7 @@ import {defineComponent, reactive, toRefs} from 'vue';
 import store from '@/store';
 import SvgIcon from '@/components/svg-icon/index.vue';
 import UserAvatar from '@/components/user-avatar/index.vue';
-import {Route, User} from "@/model";
+import {User} from "@/model";
 
 interface StateType {
   user: User;

@@ -33,7 +33,7 @@ export default {
             info:{
                 home: '首页',
                 personal: '个人中心',
-                sign_out: '退出',
+                log_out: '退出',
             }
         }
     }

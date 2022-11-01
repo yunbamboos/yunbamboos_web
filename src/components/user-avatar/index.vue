@@ -1,5 +1,5 @@
 <template>
-  <el-avatar class="layout-nav-bars-user-bar-link-photo" :size="36" :src="image"/>
+  <el-avatar class="layout-nav-bars-user-bar-link-photo" :size="32" :src="image"/>
 </template>
 
 <script lang="ts">
