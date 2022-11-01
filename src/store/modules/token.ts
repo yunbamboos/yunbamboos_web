@@ -27,6 +27,12 @@ const actions = {
     },
     setToken({commit}, token: Token) {
         commit('setToken', token);
+    },
+    clearToken({commit}) {
+        commit('setToken', {
+            token_id: ''
+        });
+        Session.remove('token');
     }
 };
 

@@ -1,22 +1,21 @@
 <template>
-  <el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" style="height: 100%;" @command="onLanguageChange">
-    <div class="layout-nav-bars-user-bar-icon">
+  <el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" style="height: 100%;" @command="onSizeChange">
+    <div class="layout-nav-bars-user-bar-icon" :title="$t('user.bars.size.title')">
       <SvgIcon class="icon" name="size" size="16"></SvgIcon>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
-        <el-dropdown-item command="zh-cn" :disabled="disabledI18n === 'zh-cn'">大型</el-dropdown-item>
-        <el-dropdown-item command="en" :disabled="disabledI18n === 'en'">默认</el-dropdown-item>
-        <el-dropdown-item command="zh-tw" :disabled="disabledI18n === 'zh-tw'">小型</el-dropdown-item>
+        <el-dropdown-item command="large" :disabled="getGlobalComponentSize === 'large'">{{$t('user.bars.size.large')}}</el-dropdown-item>
+        <el-dropdown-item command="default" :disabled="getGlobalComponentSize === 'default'">{{$t('user.bars.size.default')}}</el-dropdown-item>
+        <el-dropdown-item command="small" :disabled="getGlobalComponentSize === 'small'">{{$t('user.bars.size.small')}}</el-dropdown-item>
       </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
 
 <script lang="ts">
-import {defineComponent, getCurrentInstance, reactive, toRefs} from 'vue';
+import {defineComponent, reactive, toRefs, computed} from 'vue';
 import SvgIcon from "@/components/svg-icon/index.vue";
-import tool from '@/utils/tool';
 import store from '@/store';
 
 export default defineComponent({
@@ -25,32 +24,24 @@ export default defineComponent({
     SvgIcon
   },
   setup() {
-    const {proxy} = <any>getCurrentInstance();
-
     const state = reactive({
-      disabledI18n: 'zh-cn',
+      disabledSize: 'large',
     });
-
-    // 语言切换
-    const onLanguageChange = (lang: string) => {
-      proxy.$i18n.locale = lang;
-      state.disabledI18n = lang;
+    const onSizeChange = (size: string) => {
       store.dispatch('config/setConfig', {
-        key: 'globalI18n',
-        value: lang
+        key: 'globalComponentSize',
+        value: size
       });
-      tool.useTitle();
     };
-
+    const getGlobalComponentSize = computed(()=>{
+      return store.getters['config/getConfig']('globalComponentSize');
+    });
     return {
       ...toRefs(state),
-      onLanguageChange
+      onSizeChange,
+      getGlobalComponentSize
     }
   },
-  computed:{
-    getLang: ()=>{
-      return store.getters['config/getConfig']('globalI18n');
-    }
-  }
+
 });
 </script>

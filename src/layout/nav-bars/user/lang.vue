@@ -1,7 +1,7 @@
 <template>
   <el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" style="height: 100%;" @command="onLanguageChange">
     <div class="layout-nav-bars-user-bar-icon">
-      <SvgIcon class="icon" :name="getLang" size="20"></SvgIcon>
+      <SvgIcon class="icon" :name="getLang"></SvgIcon>
     </div>
     <template #dropdown>
       <el-dropdown-menu>

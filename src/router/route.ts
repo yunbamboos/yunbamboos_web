@@ -79,6 +79,7 @@ export async function getMenu() {
             return list;
         }, msg => {
             ElMessage.error("加载菜单失败: " + msg);
+            store.dispatch('token/clearToken');
             return [];
         });
     }

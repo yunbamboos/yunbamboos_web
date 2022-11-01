@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider :message="message">
+  <el-config-provider :size="getGlobalComponentSize" :message="message">
     <router-view></router-view>
   </el-config-provider>
 </template>
@@ -36,6 +36,11 @@ export default defineComponent({
         //document.documentElement.style.cssText = Session.get('themeConfigStyle');
       }
     });
+  },
+  computed:{
+    getGlobalComponentSize: ()=>{
+      return store.getters['config/getConfig']('globalComponentSize');
+    }
   }
 });
 </script>
