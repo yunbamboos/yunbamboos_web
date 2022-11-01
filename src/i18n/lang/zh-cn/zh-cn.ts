@@ -13,6 +13,27 @@ export default {
                 large: '大型',
                 default: '默认',
                 small: '小型'
+            },
+            lang:{
+                title: '语言切换',
+            },
+            search:{
+                title: '菜单搜索',
+            },
+            theme_skin:{
+                title: '主题皮肤配置',
+            },
+            notice:{
+                title: '消息',
+            },
+            screen_full:{
+                title: '全屏',
+                cancel_title: '取消全屏'
+            },
+            info:{
+                home: '首页',
+                personal: '个人中心',
+                sign_out: '退出',
             }
         }
     }

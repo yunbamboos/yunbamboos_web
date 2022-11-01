@@ -1,7 +1,7 @@
 <template>
   <el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" style="height: 100%;" @command="onLanguageChange">
-    <div class="layout-nav-bars-user-bar-icon">
-      <SvgIcon class="icon" :name="getLang"></SvgIcon>
+    <div class="layout-nav-bars-user-bar-icon" :title="$t('user.bars.lang.title')">
+      <SvgIcon class="icon" :name="getLang" :size="getComponentSize"></SvgIcon>
     </div>
     <template #dropdown>
       <el-dropdown-menu>
@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, getCurrentInstance, reactive, toRefs} from 'vue';
+import {computed, defineComponent, getCurrentInstance, reactive, toRefs} from 'vue';
 import SvgIcon from "@/components/svg-icon/index.vue";
 import tool from '@/utils/tool';
 import store from '@/store';
@@ -26,11 +26,10 @@ export default defineComponent({
   },
   setup() {
     const {proxy} = <any>getCurrentInstance();
-
     const state = reactive({
       disabledI18n: 'zh-cn',
     });
-
+    console.log("proxy",proxy);
     // 语言切换
     const onLanguageChange = (lang: string) => {
       proxy.$i18n.locale = lang;
@@ -41,15 +40,18 @@ export default defineComponent({
       });
       tool.useTitle();
     };
-
     return {
       ...toRefs(state),
       onLanguageChange
     }
   },
-  computed:{
-    getLang: ()=>{
+  computed: {
+    getLang: () => {
       return store.getters['config/getConfig']('globalI18n');
+    },
+    getComponentSize: () => {
+      let size = store.getters['config/getConfig']('globalComponentSize');
+      return size === 'large' ? '20' : size === 'default' ? '16' : '14';
     }
   }
 });

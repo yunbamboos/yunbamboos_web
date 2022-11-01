@@ -1,8 +1,10 @@
 <template>
-  <div class="layout-nav-bars-user-bar-icon" @click="onFullScreenClick">
+  <div class="layout-nav-bars-user-bar-icon" @click="onFullScreenClick"
+       :title="screen_full?$t('user.bars.screen_full.cancel_title'):$t('user.bars.screen_full.title')">
     <SvgIcon
         class="icon"
         :name="!screen_full? 'full_screen':'cancel_full_screen'"
+        :size="getComponentSize"
     >
     </SvgIcon>
   </div>
@@ -13,6 +15,7 @@ import {defineComponent, reactive, toRefs} from 'vue';
 import { ElMessage } from 'element-plus';
 import SvgIcon from "@/components/svg-icon/index.vue";
 import fullScreen from 'screenfull';
+import store from "@/store";
 
 export default defineComponent({
   name: "UserBarScreenFull",
@@ -38,6 +41,12 @@ export default defineComponent({
     return {
       ...toRefs(state),
       onFullScreenClick
+    }
+  },
+  computed: {
+    getComponentSize: () => {
+      let size = store.getters['config/getConfig']('globalComponentSize');
+      return size === 'large' ? '20' : size === 'default' ? '16' : '14';
     }
   }
 });
