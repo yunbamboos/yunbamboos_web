@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import {toRefs, reactive, defineComponent, computed} from 'vue';
+import {toRefs, reactive, defineComponent} from 'vue';
 import store from '@/store';
 import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
@@ -57,14 +57,10 @@ export default defineComponent({
   setup() {
     const route = useRoute();
     const state = reactive<StateType>({
-      defaultActive: route.path,
+      defaultActive: route.path as string,
       unique_opened: true,
       menuList: []
     });
-    const getCollapse = computed(() => {
-      return store.getters['config/getConfig']("collapse", "setting");
-    });
-
     let routeList = store.getters['routeList/getAll']();
     for (let i = 0; i < routeList.length; i++) {
       let route = routeList[i];
@@ -73,9 +69,13 @@ export default defineComponent({
       }
     }
     return {
-      ...toRefs(state),
-      getCollapse
+      ...toRefs(state)
     };
+  },
+  computed:{
+    getCollapse(){
+      return store.getters['config/getConfig']("collapse");
+    }
   }
 });
 </script>

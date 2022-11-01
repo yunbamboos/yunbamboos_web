@@ -2,7 +2,7 @@
   <div class="layout-nav-bars-container">
     <LogoBar/>
     <CollapseBar/>
-    <BreadcrumbBar/>
+    <BreadcrumbBar v-if="false"/>
     <MenuBar/>
     <UserBar/>
   </div>
