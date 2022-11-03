@@ -12,8 +12,7 @@ export default [
                     msg: '登录成功',
                     data: {
                         token: {
-                            account_token: '@word(50, 100)', // @word()是mockjs的语法
-                            refresh_token: '@word(50, 100)', // refresh_token是用来重新生成token的
+                            token_id: '@word(50, 100)', // @word()是mockjs的语法
                         }
                     },
                 }
