@@ -82,7 +82,7 @@ body,
   }
 }
 
-
+/* 顶栏 用户按钮样式*/
 .layout-nav-bars-user-bar {
   --el-text-color-regular:var(--layout-header-bar-color);
   height: 100%;
@@ -107,4 +107,9 @@ body,
       animation: selected 0.5s ease-in-out;
     }
   }
+}
+
+/*布局主题设置*/
+.layout-theme-skin-setings{
+
 }
