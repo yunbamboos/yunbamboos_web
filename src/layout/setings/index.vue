@@ -21,25 +21,23 @@
 <script lang="ts">
 import {nextTick, defineComponent} from 'vue';
 import store from '@/store';
-import {Session} from "@/utils/storage";
 
 import SetingsGlobal from "@/layout/setings/setings-global.vue";
 import SetingsTopBar from "@/layout/setings/setings-top-bar.vue";
 
 export default defineComponent({
   name: 'setings',
-  components:{
+  components: {
     SetingsGlobal,
     SetingsTopBar
   },
   mounted() {
-    nextTick(()=>{
-      if (Session.get('config')) {
-        store.dispatch('config/setConfigFromSession').then(()=>{
-          console.log(this);
-          this.$refs.globalRef.onPrimaryColorChange();
-        });
-      }
+    console.log(this);
+    nextTick(() => {
+      store.dispatch('config/setConfigFromSession').then(() => {
+        console.log("cesi", this);
+        this.$refs.globalRef && this.$refs.globalRef.onPrimaryColorChange();
+      });
     })
   },
   computed: {

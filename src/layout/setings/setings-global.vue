@@ -1,16 +1,18 @@
 <template>
   <!-- 全局主题 -->
-  <el-divider content-position="left">{{ $t('layout.config.global.title') }}</el-divider>
-  <div class="layout-theme-skin-setings-flex">
-    <div class="layout-theme-skin-setings-flex-label">primary</div>
-    <div class="layout-theme-skin-setings-flex-value">
-      <el-color-picker v-model="primary" size="default" @change="onPrimaryColorChange"></el-color-picker>
+  <div>
+    <el-divider content-position="left">{{ $t('layout.config.global.title') }}</el-divider>
+    <div class="layout-theme-skin-setings-flex">
+      <div class="layout-theme-skin-setings-flex-label">primary</div>
+      <div class="layout-theme-skin-setings-flex-value">
+        <el-color-picker v-model="primary" size="default" @change="onPrimaryColorChange"></el-color-picker>
+      </div>
     </div>
-  </div>
-  <div class="layout-theme-skin-setings-flex mt15">
-    <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.dark') }}</div>
-    <div class="layout-theme-skin-setings-flex-value">
-      <el-switch v-model="dark" size="small"></el-switch>
+    <div class="layout-theme-skin-setings-flex mt15">
+      <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.dark') }}</div>
+      <div class="layout-theme-skin-setings-flex-value">
+        <el-switch v-model="dark" size="small"></el-switch>
+      </div>
     </div>
   </div>
 </template>

@@ -33,8 +33,6 @@ export default defineComponent({
   },
   mounted: function () {
     nextTick(() => {
-      console.log("nextTick",this);
-      console.log("nextTick",this.mittBus);
       this.mittBus.on('openSetingsDrawer', () => {
          this.openSetingsDrawer();
       });
