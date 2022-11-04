@@ -12,7 +12,7 @@
         <!-- 全局主题 -->
         <SetingsGlobal ref="globalRef"/>
         <!-- 顶栏设置 -->
-        <SetingsTopBar/>
+        <SetingsTopBar ref="topBarRef"/>
       </el-scrollbar>
     </el-drawer>
   </div>
@@ -36,6 +36,7 @@ export default defineComponent({
     nextTick(()=>{
       if (Session.get('config')) {
         store.dispatch('config/setConfigFromSession').then(()=>{
+          console.log(this);
           this.$refs.globalRef.onPrimaryColorChange();
         });
       }

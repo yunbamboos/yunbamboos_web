@@ -1,5 +1,4 @@
 <template>
-  <!--展开收缩按钮-->
   <div class="layout-nav-bars-logo-bar" :style="getLayoutLogoStyle">
     <Logo/>
   </div>
@@ -30,12 +29,3 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped lang="scss">
-.layout-nav-bars-logo-bar{
-  width: var(--layout-logo-width);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  cursor:pointer;
-}
-</style>

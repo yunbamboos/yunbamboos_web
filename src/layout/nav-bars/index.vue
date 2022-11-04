@@ -27,22 +27,3 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped lang="scss">
-.layout-nav-bars-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 100%;
-  background: var(--layout-nav-bars-bg);
-  border-bottom: 1px solid var(--layout-nav-bars-border-color-light);
-}
-.layout-nav-bars-item{
-  height: 100%;
-  display: flex;
-  align-items: center;
-  cursor:pointer;
-  &:hover{
-    background: #4bc5d8;
-  }
-}
-</style>

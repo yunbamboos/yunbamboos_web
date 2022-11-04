@@ -15,12 +15,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped lang="scss">
-.layout-nav-bars-menu-bar {
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-</style>

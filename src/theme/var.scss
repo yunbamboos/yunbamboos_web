@@ -24,9 +24,9 @@
   --layout-logo-width: var(--layout-aside-width);
   --layout-logo-height: var(--layout-header-height);
 
-  // 顶部标题
-  --layout-header-bar-color: #e00909;
-  --layout-header-bar-hover-bg-color: rgba(224, 9, 9, 0.11);
+  // 顶栏设置
   --layout-nav-bars-bg: #ffffff;
+  --layout-nav-bars-color: var(--el-color-primary);
+  --layout-nav-bars-hover-bg-color: var(--el-color-primary-light-5);
   --layout-nav-bars-border-color-light: #f1f2f3;
 }

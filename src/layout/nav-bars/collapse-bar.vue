@@ -12,12 +12,12 @@ import store from "@/store";
 
 export default defineComponent({
   name: 'LayoutNavBarsCollapse',
-  components:{
+  components: {
     SvgIcon
   },
-  computed:{
+  computed: {
     getCollapse() {
-      return store.getters['config/getConfig']("collapse", "setting")?'expand':'collapse';
+      return store.getters['config/getConfig']("collapse", "setting") ? 'expand' : 'collapse';
     },
   },
   methods: {
@@ -32,16 +32,3 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped lang="scss">
-.layout-nav-bars-collapse-bar{
-  width: 40px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  cursor:pointer;
-  color: var(--layout-header-bar-color);
-  &:hover{
-    opacity: 0.7;
-  }
-}
-</style>
