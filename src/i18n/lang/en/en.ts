@@ -2,6 +2,11 @@ export default {
     app: {
         title: 'movie recommend'
     },
+    layout:{
+        config:{
+            title:'Layout Configuration',
+        }
+    },
     menu: {
         home: 'home',
         attention: 'attention',

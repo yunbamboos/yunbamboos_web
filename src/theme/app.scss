@@ -39,6 +39,7 @@ body,
     flex-direction: column;
     overflow-x: hidden !important;
     transition: width .5s ease;
+
     .el-scrollbar__view {
       overflow: hidden;
     }
@@ -84,32 +85,88 @@ body,
 
 /* 顶栏 用户按钮样式*/
 .layout-nav-bars-user-bar {
-  --el-text-color-regular:var(--layout-header-bar-color);
+  --el-text-color-regular: var(--layout-header-bar-color);
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   color: var(--layout-header-bar-color);
 }
-.layout-nav-bars-user-bar-icon{
+
+.layout-nav-bars-user-bar-icon {
   height: 100%;
   display: flex;
   align-items: center;
   margin-right: 5px !important;
   cursor: pointer;
-  .icon{
+
+  .icon {
     margin: 0 10px !important;
   }
-  &:hover{
+
+  &:hover {
     background: var(--layout-header-bar-hover-bg-color);
     opacity: 0.5;
-    .icon{
+
+    .icon {
       animation: selected 0.5s ease-in-out;
     }
   }
 }
 
 /*布局主题设置*/
-.layout-theme-skin-setings{
+.layout-theme-skin-setings {
+  .el-divider {
+    background-color: rgb(199, 199, 199);
+  }
 
+  .layout-theme-skin-setings-scrollbar {
+    height: calc(100vh - 50px);
+    padding: 0 15px;
+
+    :deep(.el-scrollbar__view) {
+      overflow-x: hidden !important;
+    }
+  }
+
+  &-flex {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    &-label {
+      flex: 1;
+      color: var(--el-text-color-primary);
+    }
+  }
+}
+
+
+/* 外边距、内边距全局样式
+------------------------------- */
+@for $i from 1 through 35 {
+  .mt#{$i} {
+    margin-top: #{$i}px !important;
+  }
+  .mr#{$i} {
+    margin-right: #{$i}px !important;
+  }
+  .mb#{$i} {
+    margin-bottom: #{$i}px !important;
+  }
+  .ml#{$i} {
+    margin-left: #{$i}px !important;
+  }
+  .pt#{$i} {
+    padding-top: #{$i}px !important;
+  }
+  .pr#{$i} {
+    padding-right: #{$i}px !important;
+  }
+  .pb#{$i} {
+    padding-bottom: #{$i}px !important;
+  }
+  .pl#{$i} {
+    padding-left: #{$i}px !important;
+  }
 }

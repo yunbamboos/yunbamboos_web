@@ -1,5 +1,5 @@
 <template>
-  <div class="layout-nav-bars-user-bar-icon" :title="$t('user.bars.theme_skin.title')">
+  <div class="layout-nav-bars-user-bar-icon" :title="$t('user.bars.theme_skin.title')" @click="openSetingsDrawer">
     <SvgIcon class="icon" name="theme_skin" :size="getComponentSize">
     </SvgIcon>
   </div>
@@ -19,6 +19,11 @@ export default defineComponent({
     getComponentSize: () => {
       let size = store.getters['config/getConfig']('globalComponentSize');
       return size === 'large' ? '20' : size === 'default' ? '16' : '14';
+    }
+  },
+  methods:{
+    openSetingsDrawer(){
+      this.mittBus.emit('openSetingsDrawer');
     }
   }
 });

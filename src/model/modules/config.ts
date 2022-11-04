@@ -1,11 +1,24 @@
 /**全局统一设置*/
 export class Config {
+    // 布局配置
+    drawer: boolean;
+
     // 默认 primary 主题颜色
     primary: string;
     // 是否开启深色模式
     dark: boolean;
     // 布局切换：可选值"<defaults|classic|transverse|columns>"，默认 defaults
     layout: string;
+
+    /**顶栏设置*/
+        // 顶栏背景色
+    topBarBg: string;
+    // 顶栏字体颜色
+    topBarDefaultColor: string;
+    topBarActivateColor: string;
+    topBarActivateBg: string;
+    // 背景渐变色
+    topBarBgGradual: boolean;
 
     /** 界面设置*/
     // 是否开启菜单水平折叠效果

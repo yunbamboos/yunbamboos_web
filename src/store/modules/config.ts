@@ -1,8 +1,10 @@
-import {Config, UserConfig} from '@/model';
+import {Config} from '@/model';
 import {Session} from '@/utils/storage';
 import {userConfig} from "@/api";
 
 const state = (): Config => ({
+    // 是否打开布局配置
+    drawer: false,
     // 默认 primary 主题颜色
     primary: '#38BFD4',
     // 是否开启深色模式
@@ -10,6 +12,15 @@ const state = (): Config => ({
     // 布局切换
     layout: 'defaults',
 
+    // 顶栏设置
+    // 顶栏背景色
+    topBarBg: '',
+    // 顶栏字体颜色
+    topBarDefaultColor: '',
+    topBarActivateColor: '',
+    topBarActivateBg: '',
+    // 背景渐变色
+    topBarBgGradual: false,
 
     // 是否开启菜单水平折叠效果
     collapse: false,
@@ -43,6 +54,13 @@ const mutations = {
     setConfig(state, {key, value}) {
         state[key] = value;
     },
+    setConfigs(state, configs) {
+        let attrs = Object.keys(configs);
+        for (let i = 0; i < attrs.length; i++) {
+            let attr = attrs[i];
+            state[attr] = configs[attr];
+        }
+    },
     saveConfigToSession(state) {
         Session.set('config', state);
     }
@@ -52,12 +70,7 @@ const actions = {
     setConfigFromSession({commit}) {
         let config = Session.get("config");
         if (config) {
-            let attrs = Object.keys(config);
-            for (let i = 0; i < attrs.length; i++) {
-                let attr = attrs[i];
-                let value = config[attr];
-                    commit('setConfig', { key: attr, value: value });
-            }
+            commit('setConfigs', config);
         }
     },
     setConfig({commit}, {key, value}) {

@@ -3,3 +3,19 @@
   --el-menu-text-color: var(--layout-aside-menu-text-color) !important;
   border-right: none !important;
 }
+
+.el-drawer .el-drawer__header {
+  padding: 0 15px!important;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0!important;
+  border-bottom: 1px solid var(--el-border-color);
+  color: var(--el-text-color-primary);
+}
+
+.el-drawer .el-drawer__body {
+  width: 100%;
+  padding: 0;
+  overflow: auto;
+}
