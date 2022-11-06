@@ -7,7 +7,9 @@ export default {
             title: '布局配置',
             global: {
                 title: '全局主题',
-                dark: '深色模式'
+                dark: '深色模式',
+                bg: '默认背景色',
+                color: '默认字体颜色',
             },
             top_bar: {
                 title: '顶栏设置',

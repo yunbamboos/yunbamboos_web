@@ -5,8 +5,10 @@ export class Config {
 
     // 默认 primary 主题颜色
     primary: string;
-    // 是否开启深色模式
-    dark: boolean;
+    // 默认背景颜色
+    bg: string;
+    // 默认字体颜色
+    color: string;
     // 布局切换：可选值"<defaults|classic|transverse|columns>"，默认 defaults
     layout: string;
 

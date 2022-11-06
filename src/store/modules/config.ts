@@ -7,8 +7,10 @@ const state = (): Config => ({
     drawer: false,
     // 默认 primary 主题颜色
     primary: '#38BFD4',
-    // 是否开启深色模式
-    dark: false,
+    // 默认背景颜色
+    bg: '#ffffff',
+    // 默认字体颜色
+    color: '#171717',
     // 布局切换
     layout: 'defaults',
 

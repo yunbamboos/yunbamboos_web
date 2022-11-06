@@ -19,7 +19,6 @@ body,
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
-  background-color: var(--next-bg-main-color);
   font-size: 14px;
   overflow: hidden;
   position: relative;
@@ -28,6 +27,8 @@ body,
 .layout-container {
   width: 100%;
   height: 100%;
+  color: var(--layout-color);
+  background: var(--layout-bg);
 
   .layout-aside {
     background: var(--layout-aside-bg);

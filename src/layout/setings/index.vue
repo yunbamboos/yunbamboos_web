@@ -18,9 +18,15 @@
           </div>
         </div>
         <div class="layout-theme-skin-setings-flex mt15">
-          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.dark') }}</div>
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.bg') }}</div>
           <div class="layout-theme-skin-setings-flex-value">
-            <el-switch v-model="dark" size="small" @change="onDarkChange"></el-switch>
+            <el-color-picker v-model="bg" size="default" @change="onBgChange"></el-color-picker>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.color') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
+            <el-color-picker v-model="color" size="default" @change="onColorChange"></el-color-picker>
           </div>
         </div>
 
@@ -48,7 +54,7 @@ import {getDarkColor, getLightColor} from "@/utils/theme";
 export default defineComponent({
   name: 'setings',
   mounted() {
-    this.$nextTick(()=>{
+    this.$nextTick(() => {
       store.dispatch('config/setConfigFromSession').then(() => {
         this.onPrimaryColorChange();
       });
@@ -66,12 +72,20 @@ export default defineComponent({
         store.dispatch('config/setConfig', {key: 'primary', value: value});
       }
     },
-    dark: { // 是否开启深色模式
+    bg: { // 默认背景颜色
       get() {
-        return store.getters['config/getConfig']('dark');
+        return store.getters['config/getConfig']('bg');
       },
       set(value) {
-        store.dispatch('config/setConfig', {key: 'dark', value: value});
+        store.dispatch('config/setConfig', {key: 'bg', value: value});
+      }
+    },
+    color: {
+      get() {
+        return store.getters['config/getConfig']('color');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'color', value: value});
       }
     },
     topBarBg: { // 顶栏背景色
@@ -99,14 +113,22 @@ export default defineComponent({
         document.documentElement.style.setProperty(`--el-color-primary-light-${i}`, `${getLightColor(primary, i / 10)}`);
       }
     },
-    onDarkChange(){ // 开启关闭暗黑模式
+    onBgChange() {
+      let bg = store.getters['config/getConfig']('bg');
+      document.documentElement.style.setProperty('--layout-bg', bg);
+    },
+    onColorChange() {
+      let bg = store.getters['config/getConfig']('color');
+      document.documentElement.style.setProperty('--layout-color', bg);
+    },
+    onDarkChange() { // 开启关闭暗黑模式
       const isDark = useDark({
         selector: 'body',
         attribute: 'color-scheme',
         valueDark: 'dark',
         valueLight: 'light',
       });
-      console.log("11111111111111 ",isDark);
+      console.log("11111111111111 ", isDark);
       useToggle(isDark)
     }
   },
