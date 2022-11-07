@@ -72,11 +72,12 @@ export default defineComponent({
   },
   computed:{
     style(){
-      return `height: 49px;
+      return `height: 50px;
               width: 100%;
               --el-menu-item-height: 48px;
-              --el-menu-text-color: var(--layout-aside-menu-text-color);
-              --el-menu-border-color: var(--layout-aside-bg);`
+              --el-menu-text-color: var(--layout-nav-bars-color);
+              --el-menu-border-color: var(--layout-border);
+              --el-menu-hover-bg-color: var(--el-color-primary-light-7);`
     }
   }
 });

@@ -13,10 +13,11 @@
   // 默认背景
   --layout-bg: #ffffff;
   --layout-color: #171717;
+  --layout-border: var(--layout-bg);
   // 侧边栏 背景色
   --layout-aside-bg: var(--layout-bg);
   --layout-aside-menu-text-color: var(--layout-color);
-  --layout-aside-border-right-color: var(--el-color-primary-light-9); // 侧边栏右边框颜色
+  --layout-aside-border-right-color: var(--layout-border, var(--el-color-primary-light-6)); // 侧边栏右边框颜色
 
   // 头部高度 高 不包含标签栏高度
   --layout-header-height: 50px;
@@ -29,8 +30,8 @@
   --layout-logo-height: var(--layout-header-height);
 
   // 顶栏设置
-  --layout-nav-bars-bg: #ffffff;
-  --layout-nav-bars-color: var(--el-color-primary);
-  --layout-nav-bars-hover-bg-color: var(--el-color-primary-light-5);
-  --layout-nav-bars-border-color-light: #f1f2f3;
+  --layout-nav-bars-bg: var(--layout-bg);
+  --layout-nav-bars-color: var(--layout-color);
+  --layout-nav-bars-hover-bg-color: var(--el-color-primary-light-6); // 顶栏底部边框颜色
+  --layout-nav-bars-border-color: var(--layout-border, var(--el-color-primary-light-6));
 }

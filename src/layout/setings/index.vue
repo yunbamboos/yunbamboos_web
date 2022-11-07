@@ -63,6 +63,9 @@ export default defineComponent({
     this.$nextTick(() => {
       store.dispatch('config/setConfigFromSession').then(() => {
         this.onPrimaryColorChange();
+        this.onBgChange();
+        this.onColorChange();
+        this.onBorderChange();
       });
     });
   },

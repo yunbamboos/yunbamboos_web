@@ -11,6 +11,8 @@ const state = (): Config => ({
     bg: '#ffffff',
     // 默认字体颜色
     color: '#171717',
+    // 边框颜色
+    border: '#eaeaea',
     // 布局切换
     layout: 'defaults',
 

@@ -56,9 +56,9 @@ body,
   flex-direction: row;
   width: 100%;
   height: 100%;
-  color: var(--layout-nav-bars-color, var(--el-color-primary));
+  color: var(--layout-nav-bars-color, var(--layout-color));
   background: var(--layout-nav-bars-bg);
-  border-bottom: 1px solid var(--layout-nav-bars-border-color-light);
+  border-bottom: 1px solid var(--layout-nav-bars-border-color);
   /**logo 展示*/
   .layout-nav-bars-logo-bar {
     width: var(--layout-logo-width);

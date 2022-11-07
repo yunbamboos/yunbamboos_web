@@ -9,6 +9,8 @@ export class Config {
     bg: string;
     // 默认字体颜色
     color: string;
+    // 边框颜色
+    border: string;
     // 布局切换：可选值"<defaults|classic|transverse|columns>"，默认 defaults
     layout: string;
 
