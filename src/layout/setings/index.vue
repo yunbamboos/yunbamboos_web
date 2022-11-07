@@ -41,6 +41,30 @@
         <div class="layout-theme-skin-setings-flex">
           <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.bg') }}</div>
           <div class="layout-theme-skin-setings-flex-value">
+            <el-color-picker v-model="topBarBg" size="default" @change="onTopBarBgChange"></el-color-picker>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.gradual') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
+            <el-switch v-model="topBarBgGradual" size="small" @change="onTopBarBgGradualChange"></el-switch>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.color') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
+            <el-color-picker v-model="topBarDefaultColor" size="default"  @change="onTopBarDefaultColorChange"></el-color-picker>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.selected_color') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
+            <el-color-picker v-model="topBarSelectedColor" size="default" @change="onTopBarSelectedColorChange"></el-color-picker>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.selected_bg') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
             <el-color-picker v-model="topBarBg" size="default"></el-color-picker>
           </div>
         </div>
@@ -66,6 +90,8 @@ export default defineComponent({
         this.onBgChange();
         this.onColorChange();
         this.onBorderChange();
+        this.onTopBarBgChange();
+        this.onTopBarDefaultColorChange();
       });
     });
   },
@@ -112,6 +138,30 @@ export default defineComponent({
       set(value) {
         store.dispatch('config/setConfig', {key: 'topBarBg', value: value});
       }
+    },
+    topBarBgGradual: { // 顶栏背景色渐变
+      get() {
+        return store.getters['config/getConfig']('topBarBgGradual');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'topBarBgGradual', value: value});
+      }
+    },
+    topBarDefaultColor:{
+      get() {
+        return store.getters['config/getConfig']('topBarDefaultColor');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'topBarDefaultColor', value: value});
+      }
+    },
+    topBarSelectedColor:{
+      get() {
+        return store.getters['config/getConfig']('topBarSelectedColor');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'topBarSelectedColor', value: value});
+      }
     }
   },
   methods: {
@@ -138,19 +188,29 @@ export default defineComponent({
       let color = store.getters['config/getConfig']('color');
       document.documentElement.style.setProperty('--layout-color', color);
     },
-    onBorderChange(){
+    onBorderChange() {
       let border = store.getters['config/getConfig']('border');
       document.documentElement.style.setProperty('--layout-border', border);
     },
-    onDarkChange() { // 开启关闭暗黑模式
-      const isDark = useDark({
-        selector: 'body',
-        attribute: 'color-scheme',
-        valueDark: 'dark',
-        valueLight: 'light',
-      });
-      console.log("11111111111111 ", isDark);
-      useToggle(isDark)
+    onTopBarBgChange(){
+      this.onTopBarBgGradualChange();
+    },
+    onTopBarBgGradualChange(){
+      let topBarBgGradual = store.getters['config/getConfig']('topBarBgGradual');
+      let color = store.getters['config/getConfig']('topBarBg');
+      if(topBarBgGradual){
+        document.documentElement.style.setProperty('--layout-nav-bars-bg', `linear-gradient(to bottom left , ${color}, ${getLightColor(color, 0.6)})`);
+      } else {
+        document.documentElement.style.setProperty('--layout-nav-bars-bg', color);
+      }
+    },
+    onTopBarDefaultColorChange(){
+      let topBarDefaultColor = store.getters['config/getConfig']('topBarDefaultColor');
+      document.documentElement.style.setProperty('--layout-nav-bars-color', topBarDefaultColor);
+    },
+    onTopBarSelectedColorChange(){
+      let topBarDefaultColor = store.getters['config/getConfig']('topBarDefaultColor');
+      document.documentElement.style.setProperty('--layout-nav-bars-hover-bg-color', topBarDefaultColor);
     }
   },
 });

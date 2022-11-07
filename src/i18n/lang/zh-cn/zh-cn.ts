@@ -16,8 +16,8 @@ export default {
                 title: '顶栏设置',
                 bg: '顶栏背景',
                 color: '顶栏默认字体颜色',
-                activate_color: '顶栏选中字体颜色',
-                activate_bg: '顶栏选中背景色',
+                selected_color: '顶栏选中字体颜色',
+                selected_bg: '顶栏选中背景色',
                 gradual: '顶栏背景渐变',
             }
         }

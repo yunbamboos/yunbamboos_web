@@ -17,12 +17,13 @@ export class Config {
     /**顶栏设置*/
         // 顶栏背景色
     topBarBg: string;
-    // 顶栏字体颜色
-    topBarDefaultColor: string;
-    topBarActivateColor: string;
-    topBarActivateBg: string;
     // 背景渐变色
     topBarBgGradual: boolean;
+    // 顶栏字体颜色
+    topBarDefaultColor: string;
+    topBarSelectedColor: string;
+    topBarSelectedBg: string;
+
 
     /** 界面设置*/
     // 是否开启菜单水平折叠效果

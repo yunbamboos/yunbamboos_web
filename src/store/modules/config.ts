@@ -19,12 +19,13 @@ const state = (): Config => ({
     // 顶栏设置
     // 顶栏背景色
     topBarBg: '',
-    // 顶栏字体颜色
-    topBarDefaultColor: '',
-    topBarActivateColor: '',
-    topBarActivateBg: '',
     // 背景渐变色
     topBarBgGradual: false,
+    // 顶栏字体颜色
+    topBarDefaultColor: '',
+    topBarSelectedColor: '',
+    topBarSelectedBg: '',
+
 
     // 是否开启菜单水平折叠效果
     collapse: false,
