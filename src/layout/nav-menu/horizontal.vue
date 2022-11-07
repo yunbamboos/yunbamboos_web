@@ -4,10 +4,7 @@
              :default-active="defaultActive"
              :unique-opened="unique_opened"
              background-color="transparent"
-    style="--el-menu-item-height:49px;
-          --el-menu-text-color:#000000;
-          --el-menu-border-color: #ffffff;
-          width: 100%;">
+             :style="style">
       <template v-for="menu in menuList">
         <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0" :key="menu.path">
           <template #title>
@@ -66,13 +63,21 @@ export default defineComponent({
     for (let i = 0; i < routeList.length; i++) {
       let route = routeList[i];
       if (route.meta && !route.meta.hide) {
-        console.log(route)
         state.menuList.push(route);
       }
     }
     return {
       ...toRefs(state),
     };
+  },
+  computed:{
+    style(){
+      return `height: 49px;
+              width: 100%;
+              --el-menu-item-height: 48px;
+              --el-menu-text-color: var(--layout-aside-menu-text-color);
+              --el-menu-border-color: var(--layout-aside-bg);`
+    }
   }
 });
 </script>

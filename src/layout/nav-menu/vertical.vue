@@ -5,7 +5,8 @@
              :default-active="defaultActive"
              :unique-opened="unique_opened"
              background-color="transparent"
-             :collapse-transition="false">
+             :collapse-transition="false"
+             :style="style">
       <template v-for="menu in menuList">
         <el-sub-menu :index="menu.path" v-if="menu.children && menu.children.length > 0" :key="menu.path">
           <template #title>
@@ -75,6 +76,12 @@ export default defineComponent({
   computed:{
     getCollapse(){
       return store.getters['config/getConfig']("collapse");
+    },
+    style(){
+      return `--el-menu-item-height: 50px;
+              --el-menu-text-color: var(--layout-aside-menu-text-color);
+              --el-menu-border-color: var(--layout-aside-bg);
+              --el-menu-hover-bg-color: var(--el-color-primary-light-7)`
     }
   }
 });

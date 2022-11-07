@@ -15,7 +15,8 @@
   --layout-color: #171717;
   // 侧边栏 背景色
   --layout-aside-bg: var(--layout-bg);
-  --layout-aside-menu-text-color: #ffffff;
+  --layout-aside-menu-text-color: var(--layout-color);
+  --layout-aside-border-right-color: var(--el-color-primary-light-9); // 侧边栏右边框颜色
 
   // 头部高度 高 不包含标签栏高度
   --layout-header-height: 50px;

@@ -29,7 +29,6 @@ export default defineComponent({
     const state = reactive({
       disabledI18n: 'zh-cn',
     });
-    console.log("proxy",proxy);
     // 语言切换
     const onLanguageChange = (lang: string) => {
       proxy.$i18n.locale = lang;

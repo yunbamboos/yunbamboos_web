@@ -12,7 +12,7 @@
         <!-- 全局主题 -->
         <el-divider content-position="left">{{ $t('layout.config.global.title') }}</el-divider>
         <div class="layout-theme-skin-setings-flex">
-          <div class="layout-theme-skin-setings-flex-label">primary</div>
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.primary') }}</div>
           <div class="layout-theme-skin-setings-flex-value">
             <el-color-picker v-model="primary" size="default" @change="onPrimaryColorChange"></el-color-picker>
           </div>
@@ -27,6 +27,12 @@
           <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.color') }}</div>
           <div class="layout-theme-skin-setings-flex-value">
             <el-color-picker v-model="color" size="default" @change="onColorChange"></el-color-picker>
+          </div>
+        </div>
+        <div class="layout-theme-skin-setings-flex mt15">
+          <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.global.border') }}</div>
+          <div class="layout-theme-skin-setings-flex-value">
+            <el-color-picker v-model="border" size="default" @change="onBorderChange"></el-color-picker>
           </div>
         </div>
 
@@ -88,6 +94,14 @@ export default defineComponent({
         store.dispatch('config/setConfig', {key: 'color', value: value});
       }
     },
+    border: {
+      get() {
+        return store.getters['config/getConfig']('border');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'border', value: value});
+      }
+    },
     topBarBg: { // 顶栏背景色
       get() {
         return store.getters['config/getConfig']('topBarBg');
@@ -118,8 +132,12 @@ export default defineComponent({
       document.documentElement.style.setProperty('--layout-bg', bg);
     },
     onColorChange() {
-      let bg = store.getters['config/getConfig']('color');
-      document.documentElement.style.setProperty('--layout-color', bg);
+      let color = store.getters['config/getConfig']('color');
+      document.documentElement.style.setProperty('--layout-color', color);
+    },
+    onBorderChange(){
+      let border = store.getters['config/getConfig']('border');
+      document.documentElement.style.setProperty('--layout-border', border);
     },
     onDarkChange() { // 开启关闭暗黑模式
       const isDark = useDark({

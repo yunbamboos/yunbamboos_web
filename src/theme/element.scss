@@ -1,7 +1,6 @@
 // 默认样式修改
-.el-menu {
-  --el-menu-text-color: var(--layout-aside-menu-text-color) !important;
-  border-right: none !important;
+.el-menu .el-menu-item.is-active{
+  background: var(--el-color-primary-light-8);
 }
 
 .el-drawer .el-drawer__header {
