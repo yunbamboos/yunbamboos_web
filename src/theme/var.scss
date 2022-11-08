@@ -30,8 +30,9 @@
   --layout-logo-height: var(--layout-header-height);
 
   // 顶栏设置
-  --layout-nav-bars-bg: var(--layout-bg);
-  --layout-nav-bars-color: var(--layout-color);
-  --layout-nav-bars-hover-bg-color: var(--el-color-primary-light-6); // 顶栏底部边框颜色
-  --layout-nav-bars-border-color: var(--layout-border, var(--el-color-primary-light-6));
+  --layout-nav-bars-bg: var(--layout-bg); // 背景色
+  --layout-nav-bars-color: var(--layout-color); // 默认字体
+  --layout-nav-bars-hover-color: var(--el-color-primary); // 选中字体
+  --layout-nav-bars-hover-bg-color: var(--el-color-primary-light-6); // 选中背景
+  --layout-nav-bars-border-color: var(--layout-border, var(--el-color-primary-light-6)); // 边框
 }

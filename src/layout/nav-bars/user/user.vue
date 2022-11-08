@@ -52,6 +52,7 @@ export default defineComponent({
   align-items: center;
   white-space: nowrap;
   margin-right: 5px;
+  color: var(--layout-nav-bars-color);
 
   &-photo {
     border-radius: 100%;

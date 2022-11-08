@@ -28,10 +28,10 @@ export default {
   computed: {
     // 获取侧边栏 展开关闭状态
     getCollapse() {
-      return !store.getters['config/getConfig']("collapse", "setting");
+      return !store.getters['config/getConfig']("collapse");
     },
     getLayoutLogoStyle() {
-      let collapse = store.getters['config/getConfig']("collapse", "setting");
+      let collapse = store.getters['config/getConfig']("collapse");
       if (collapse) {
         return `--layout-logo-width:var(--layout-aside-collapse-width);`;
       } else {
@@ -41,9 +41,8 @@ export default {
   },
   methods: {
     onThemeConfigChange() {
-      let collapse = store.getters['config/getConfig']("collapse", "setting");
+      let collapse = store.getters['config/getConfig']("collapse");
       store.dispatch('config/setConfig', {
-        group: 'setting',
         key: 'collapse',
         value: !collapse
       });
@@ -51,56 +50,3 @@ export default {
   }
 }
 </script>
-
-<style scoped lang="scss">
-.layout-logo {
-  width: var(--layout-logo-width);
-  height: var(--layout-logo-height);
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: rgb(0 21 41 / 2%) 0 1px 4px;
-  font-size: 16px;
-  cursor: pointer;
-  animation: logoAnimation 0.3s ease-in-out;
-
-  span {
-    white-space: nowrap;
-    display: inline-block;
-  }
-
-  &:hover {
-    span {
-      color: var(--color-primary-light-5);
-    }
-  }
-
-  &-medium-img {
-    width: 20px;
-    margin-right: 5px;
-  }
-}
-
-.layout-logo-size {
-  width: 100%;
-  height: var(--layout-logo-height);
-  color: var(--el-color-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  animation: logoAnimation 0.3s ease-in-out;
-
-  &-img {
-    width: 20px;
-    margin: auto;
-  }
-
-  &:hover {
-    img {
-      animation: logoAnimation 0.3s ease-in-out;
-    }
-  }
-}
-</style>

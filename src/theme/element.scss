@@ -1,6 +1,10 @@
 // 默认样式修改
 .el-menu .el-menu-item.is-active{
-  background: var(--el-color-primary-light-8);
+  background: var(--layout-nav-bars-hover-bg-color, var(--el-color-primary-light-8));
+}
+
+.el-menu-item.is-active {
+  color: var(--layout-nav-bars-border-color);
 }
 
 .el-drawer .el-drawer__header {
