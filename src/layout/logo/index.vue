@@ -1,10 +1,12 @@
 <template>
-  <div class="layout-logo" v-if="getCollapse" :style="getLayoutLogoStyle" @click="onThemeConfigChange">
-    <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
-    <span>{{ $t(title) }}</span>
-  </div>
-  <div class="layout-logo-size" v-else @click="onThemeConfigChange">
-    <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
+  <div class="layout-logo-container">
+    <div class="layout-logo" v-if="getCollapse" :style="getLayoutLogoStyle" @click="onThemeConfigChange">
+      <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
+      <span>{{ $t(title) }}</span>
+    </div>
+    <div class="layout-logo-size" v-else @click="onThemeConfigChange">
+      <SvgIcon name="logo" size="32" class="layout-logo-medium-img"></SvgIcon>
+    </div>
   </div>
 </template>
 
@@ -18,7 +20,7 @@ export default {
   components: {
     SvgIcon
   },
-  setup() {
+  data() {
     return {
       title: APP_TITLE,
     }
@@ -70,7 +72,7 @@ export default {
 
   &:hover {
     span {
-      color: var(--color-primary-light-2);
+      color: var(--color-primary-light-5);
     }
   }
 

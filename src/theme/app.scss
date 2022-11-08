@@ -41,6 +41,7 @@ body,
     overflow-x: hidden !important;
     transition: width .5s ease;
     border-right: 1px solid var(--layout-aside-border-right-color);
+
     .el-scrollbar__view {
       overflow: hidden;
     }
@@ -48,9 +49,60 @@ body,
 
 }
 
+.layout-logo-container {
+  .layout-logo {
+    width: var(--layout-logo-width);
+    height: var(--layout-logo-height);
+    color: var(--layout-logo-color, var(--el-color-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: rgb(0 21 41 / 2%) 0 1px 4px;
+    font-size: 16px;
+    cursor: pointer;
+    animation: logoAnimation 0.3s ease-in-out;
+
+    span {
+      white-space: nowrap;
+      display: inline-block;
+    }
+
+    &:hover {
+      color: var(--layout-logo-hover-color, var(--color-primary-light-5));
+    }
+
+    &-medium-img {
+      width: 20px;
+      margin-right: 5px;
+    }
+  }
+
+  .layout-logo-size {
+    width: 100%;
+    height: var(--layout-logo-height);
+    color: var(--layout-logo-color, var(--el-color-primary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: logoAnimation 0.3s ease-in-out;
+
+    &-img {
+      width: 20px;
+      margin: auto;
+    }
+
+    &:hover {
+      color: var(--layout-logo-hover-color, var(--color-primary-light-5));
+      img {
+        animation: logoAnimation 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
 
 /* 顶栏 用户按钮样式*/
-
 .layout-nav-bars-container {
   display: flex;
   flex-direction: row;
@@ -99,12 +151,10 @@ body,
 }
 
 .layout-nav-bars-user-bar {
-  --el-text-color-regular: var(--layout-header-bar-color);
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  color: var(--layout-header-bar-color);
 }
 
 .layout-nav-bars-user-bar-icon {
@@ -119,6 +169,7 @@ body,
   }
 
   &:hover {
+    color: var(--layout-nav-bars-hover-color);
     background: var(--layout-nav-bars-hover-bg-color);
 
     .icon {

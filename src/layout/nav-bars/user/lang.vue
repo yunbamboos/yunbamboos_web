@@ -1,5 +1,9 @@
 <template>
-  <el-dropdown :show-timeout="70" :hide-timeout="50" trigger="click" style="height: 100%;" @command="onLanguageChange">
+  <el-dropdown :show-timeout="70"
+               :hide-timeout="50"
+               trigger="click"
+               :style="getStyle"
+               @command="onLanguageChange">
     <div class="layout-nav-bars-user-bar-icon" :title="$t('user.bars.lang.title')">
       <SvgIcon class="icon" :name="getLang" :size="getComponentSize"></SvgIcon>
     </div>
@@ -51,6 +55,11 @@ export default defineComponent({
     getComponentSize: () => {
       let size = store.getters['config/getConfig']('globalComponentSize');
       return size === 'large' ? '20' : size === 'default' ? '16' : '14';
+    },
+    getStyle() {
+      return `height: 100%;
+              --el-text-color-regular: var(--layout-nav-bars-color);
+              `;
     }
   }
 });

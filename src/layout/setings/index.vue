@@ -65,7 +65,7 @@
         <div class="layout-theme-skin-setings-flex mt15">
           <div class="layout-theme-skin-setings-flex-label">{{ $t('layout.config.top_bar.selected_bg') }}</div>
           <div class="layout-theme-skin-setings-flex-value">
-            <el-color-picker v-model="topBarBg" size="default"></el-color-picker>
+            <el-color-picker v-model="topBarSelectedBg" size="default" @change="onTopBarSelectedBgChange"></el-color-picker>
           </div>
         </div>
 
@@ -86,12 +86,8 @@ export default defineComponent({
   mounted() {
     this.$nextTick(() => {
       store.dispatch('config/setConfigFromSession').then(() => {
-        this.onPrimaryColorChange();
-        this.onBgChange();
-        this.onColorChange();
-        this.onBorderChange();
-        this.onTopBarBgChange();
-        this.onTopBarDefaultColorChange();
+        this.init();
+        this.initTopBar();
       });
     });
   },
@@ -162,6 +158,14 @@ export default defineComponent({
       set(value) {
         store.dispatch('config/setConfig', {key: 'topBarSelectedColor', value: value});
       }
+    },
+    topBarSelectedBg:{
+      get() {
+        return store.getters['config/getConfig']('topBarSelectedBg');
+      },
+      set(value) {
+        store.dispatch('config/setConfig', {key: 'topBarSelectedBg', value: value});
+      }
     }
   },
   methods: {
@@ -192,13 +196,16 @@ export default defineComponent({
       let border = store.getters['config/getConfig']('border');
       document.documentElement.style.setProperty('--layout-border', border);
     },
+    init(){ // 初始化全局配置
+      this.onPrimaryColorChange(); this.onBgChange(); this.onColorChange(); this.onBorderChange();
+    },
     onTopBarBgChange(){
       this.onTopBarBgGradualChange();
     },
     onTopBarBgGradualChange(){
       let topBarBgGradual = store.getters['config/getConfig']('topBarBgGradual');
       let color = store.getters['config/getConfig']('topBarBg');
-      if(topBarBgGradual){
+      if(topBarBgGradual && color){
         document.documentElement.style.setProperty('--layout-nav-bars-bg', `linear-gradient(to bottom left , ${color}, ${getLightColor(color, 0.6)})`);
       } else {
         document.documentElement.style.setProperty('--layout-nav-bars-bg', color);
@@ -209,8 +216,18 @@ export default defineComponent({
       document.documentElement.style.setProperty('--layout-nav-bars-color', topBarDefaultColor);
     },
     onTopBarSelectedColorChange(){
-      let topBarDefaultColor = store.getters['config/getConfig']('topBarDefaultColor');
-      document.documentElement.style.setProperty('--layout-nav-bars-hover-bg-color', topBarDefaultColor);
+      let topBarSelectedColor = store.getters['config/getConfig']('topBarSelectedColor');
+      document.documentElement.style.setProperty('--layout-nav-bars-hover-color', topBarSelectedColor);
+    },
+    onTopBarSelectedBgChange(){
+      let topBarSelectedBg = store.getters['config/getConfig']('topBarSelectedBg');
+      document.documentElement.style.setProperty('--layout-nav-bars-hover-bg-color', topBarSelectedBg);
+    },
+    initTopBar(){ // 初始化顶栏配置
+      this.onTopBarBgChange();
+      this.onTopBarDefaultColorChange();
+      this.onTopBarSelectedColorChange()
+      this.onTopBarSelectedBgChange()
     }
   },
 });
