@@ -54,9 +54,8 @@ export default defineComponent({
   },
   methods: {
     onThemeConfigChange() {
-      let collapse = store.getters['config/getConfig']("collapse", "setting");
+      let collapse = store.getters['config/getConfig']("collapse");
       store.dispatch('config/setConfig', {
-        group: 'setting',
         key: 'collapse',
         value: !collapse
       });

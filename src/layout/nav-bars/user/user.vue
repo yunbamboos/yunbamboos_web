@@ -6,7 +6,7 @@
 				<SvgIcon name="arrow" size="16" style="margin-left: 5px;margin-right: 5px;"/>
 			</span>
     <template #dropdown>
-      <el-dropdown-menu>
+      <el-dropdown-menu :style="getDropdownStyle">
         <el-dropdown-item command="/home">{{ $t('user.bars.info.home') }}</el-dropdown-item>
         <el-dropdown-item command="/personal">{{ $t('user.bars.info.personal') }}</el-dropdown-item>
         <el-dropdown-item divided command="logOut">{{ $t('user.bars.info.log_out') }}</el-dropdown-item>
@@ -28,7 +28,7 @@ interface StateType {
 
 export default defineComponent({
   name: "UserBarUser",
-  components:{
+  components: {
     SvgIcon,
     UserAvatar
   },
@@ -41,7 +41,14 @@ export default defineComponent({
       ...toRefs(state)
     }
   },
-  computed: {}
+  computed: {
+    getDropdownStyle() {
+      return `height: 100%;
+              --el-dropdown-menuItem-hover-fill: var(--layout-nav-bars-hover-bg-color);
+              --el-dropdown-menuItem-hover-color: var(--layout-nav-bars-hover-color);
+              `;
+    }
+  }
 });
 </script>
 

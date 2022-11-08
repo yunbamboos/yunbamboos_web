@@ -7,7 +7,7 @@
       <SvgIcon class="icon" name="size" :size="getComponentSize"></SvgIcon>
     </div>
     <template #dropdown>
-      <el-dropdown-menu>
+      <el-dropdown-menu :style="getDropdownStyle">
         <el-dropdown-item command="large" :disabled="getGlobalComponentSize === 'large'">
           {{ $t('user.bars.size.large') }}
         </el-dropdown-item>
@@ -51,6 +51,12 @@ export default defineComponent({
     getStyle() {
       return `height: 100%;
               --el-text-color-regular: var(--layout-nav-bars-color);
+              `;
+    },
+    getDropdownStyle() {
+      return `height: 100%;
+              --el-dropdown-menuItem-hover-fill: var(--layout-nav-bars-hover-bg-color);
+              --el-dropdown-menuItem-hover-color: var(--layout-nav-bars-hover-color);
               `;
     }
   }

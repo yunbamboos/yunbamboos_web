@@ -8,7 +8,7 @@
       <SvgIcon class="icon" :name="getLang" :size="getComponentSize"></SvgIcon>
     </div>
     <template #dropdown>
-      <el-dropdown-menu>
+      <el-dropdown-menu :style="getDropdownStyle">
         <el-dropdown-item command="zh-cn" :disabled="disabledI18n === 'zh-cn'">简体中文</el-dropdown-item>
         <el-dropdown-item command="en" :disabled="disabledI18n === 'en'">English</el-dropdown-item>
         <el-dropdown-item command="zh-tw" :disabled="disabledI18n === 'zh-tw'">繁體中文</el-dropdown-item>
@@ -59,6 +59,12 @@ export default defineComponent({
     getStyle() {
       return `height: 100%;
               --el-text-color-regular: var(--layout-nav-bars-color);
+              `;
+    },
+    getDropdownStyle() {
+      return `height: 100%;
+              --el-dropdown-menuItem-hover-fill: var(--layout-nav-bars-hover-bg-color);
+              --el-dropdown-menuItem-hover-color: var(--layout-nav-bars-hover-color);
               `;
     }
   }
