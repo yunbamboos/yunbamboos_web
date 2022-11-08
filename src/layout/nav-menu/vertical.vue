@@ -71,17 +71,20 @@ export default defineComponent({
       ...toRefs(state)
     };
   },
-  computed:{
-    getCollapse(){
+  computed: {
+    getCollapse() {
       return store.getters['config/getConfig']("collapse");
     },
-    style(){
-      return `--el-menu-item-height: 50px;
+    style() {
+      return `border-right-width: 0px;
+              --el-menu-item-height: 50px;
               --el-menu-text-color: var(--layout-aside-menu-color);
               --el-menu-hover-text-color: var(--layout-aside-menu-hover-color);
               --el-menu-border-color: var(--layout-border);
               --el-menu-hover-bg-color: var(--layout-aside-menu-hover-bg-color);
-              --el-menu-active-color:var(--layout-aside-menu-hover-color);
+              --el-menu-active-color: var(--layout-aside-menu-hover-color);
+              --el-menu-item-hover-bg-color: var(--layout-aside-menu-hover-bg-color);
+              --el-menu-item-hover-color: var(--layout-aside-menu-hover-color);
               `
     }
   }

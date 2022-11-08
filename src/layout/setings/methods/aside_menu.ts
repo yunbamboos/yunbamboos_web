@@ -9,7 +9,7 @@ export default {
         let gradual = store.getters['config/getConfig']('asideMenuBgGradual');
         let color = store.getters['config/getConfig']('asideMenuBg');
         if(gradual && color){
-            document.documentElement.style.setProperty('--layout-aside-menu-bg', `linear-gradient(to bottom left , ${color}, ${getLightColor(color, 0.6)})`);
+            document.documentElement.style.setProperty('--layout-aside-menu-bg', `linear-gradient(to left bottom  , ${color}, ${getLightColor(color, 0.6)})`);
         } else {
             document.documentElement.style.setProperty('--layout-aside-menu-bg', color);
         }

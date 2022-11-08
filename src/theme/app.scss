@@ -31,7 +31,7 @@ body,
   background: var(--layout-bg);
 
   .layout-aside {
-    background: var(--layout-aside-bg);
+    background: var(--layout-aside-menu-bg);
     box-shadow: 2px 0 6px rgb(0 21 41 / 1%);
     height: inherit;
     position: relative;
@@ -40,7 +40,7 @@ body,
     flex-direction: column;
     overflow-x: hidden !important;
     transition: width .5s ease;
-    border-right: 1px solid var(--layout-aside-border-right-color);
+    border-right: 1px solid var(--layout-aside-menu-border-color);
 
     .el-scrollbar__view {
       overflow: hidden;

@@ -1,10 +1,14 @@
-// 默认样式修改
+// 默认样式修改 --el-menu-item-hover-bg-color  --layout-nav-bars-hover-bg-color
 .el-menu .el-menu-item.is-active{
-  background: var(--layout-nav-bars-hover-bg-color, var(--el-color-primary-light-8));
+  background: var(--el-menu-item-hover-bg-color, var(--el-color-primary-light-8));
 }
 
 .el-menu-item.is-active {
-  color: var(--layout-nav-bars-border-color);
+  color: var(--el-menu-item-hover-color);
+}
+
+.el-menu--vertical .el-menu-item:hover{
+  color: var(--el-menu-item-hover-color);
 }
 
 .el-drawer .el-drawer__header {

@@ -77,8 +77,9 @@ export default defineComponent({
               --el-menu-hover-text-color: var(--layout-nav-bars-hover-color);
               --el-menu-border-color: var(--layout-border);
               --el-menu-hover-bg-color: var(--layout-nav-bars-hover-bg-color);
-              --el-menu-active-color:var(--layout-nav-bars-hover-color);
-
+              --el-menu-active-color: var(--layout-nav-bars-hover-color);
+              --el-menu-item-hover-bg-color: var(--layout-nav-bars-hover-bg-color);
+              --el-menu-item-hover-color： var(--layout-nav-bars-hover-color);
               `
     }
   }
