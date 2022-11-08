@@ -1,8 +1,9 @@
 <template>
   <div class="index-container">
-    首页
-
     <el-color-picker v-model="color" size="large" />
+    <template v-for="i in 100">
+      首页{{i}}<br>
+    </template>
   </div>
 </template>
 
