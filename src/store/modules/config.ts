@@ -3,29 +3,26 @@ import {Session} from '@/utils/storage';
 import {userConfig} from "@/api";
 
 const state = (): Config => ({
-    // 是否打开布局配置
-    drawer: false,
-    // 默认 primary 主题颜色
-    primary: '#38BFD4',
-    // 默认背景颜色
-    bg: '#ffffff',
-    // 默认字体颜色
-    color: '#171717',
-    // 边框颜色
-    border: '#eaeaea',
-    // 布局切换
-    layout: 'defaults',
+    drawer: false, // 是否打开布局配置
 
-    // 顶栏设置
-    // 顶栏背景色
-    topBarBg: '',
-    // 背景渐变色
-    topBarBgGradual: false,
-    // 顶栏字体颜色
-    topBarDefaultColor: '',
+    primary: '#38BFD4', // 默认 primary 主题颜色
+    bg: '#ffffff', // 默认背景颜色
+    color: '#171717', // 默认字体颜色
+    border: '#eaeaea', // 边框颜色
+
+    /**顶栏设置*/
+    topBarBg: '', // 顶栏背景色
+    topBarBgGradual: false, // 背景渐变色
+    topBarDefaultColor: '', // 顶栏字体颜色
     topBarSelectedColor: '',
     topBarSelectedBg: '',
 
+    /**菜单栏配置*/
+    asideMenuBg: '',
+    asideMenuBgGradual: false,
+    asideMenuDefaultColor: '',
+    asideMenuSelectedColor: '',
+    asideMenuSelectedBg: '',
 
     // 是否开启菜单水平折叠效果
     collapse: false,
@@ -34,6 +31,7 @@ const state = (): Config => ({
     // 是否开启固定 Header
     fixedHeader: false,
 
+    layout: 'defaults', // 布局切换
 
     //是否显示logo
     logo: true,

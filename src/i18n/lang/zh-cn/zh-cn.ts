@@ -15,10 +15,18 @@ export default {
             top_bar: {
                 title: '顶栏设置',
                 bg: '顶栏背景',
+                gradual: '顶栏背景渐变',
                 color: '顶栏默认字体颜色',
                 selected_color: '顶栏选中字体颜色',
                 selected_bg: '顶栏选中背景色',
-                gradual: '顶栏背景渐变',
+            },
+            aside_menu:{
+                title: '菜单栏设置',
+                bg: '菜单栏背景',
+                gradual: '菜单栏背景渐变',
+                color: '菜单栏默认字体颜色',
+                selected_color: '菜单栏选中字体颜色',
+                selected_bg: '菜单栏选中背景色',
             }
         }
     },
