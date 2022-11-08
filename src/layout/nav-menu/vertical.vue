@@ -36,7 +36,6 @@
 <script lang="ts">
 import {toRefs, reactive, defineComponent} from 'vue';
 import store from '@/store';
-import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
 import SubItem from "@/layout/nav-menu/subItem.vue";
 import SvgIcon from "@/components/svg-icon/index.vue";
@@ -51,7 +50,6 @@ interface StateType {
 export default defineComponent({
   name: "NavMenuVertical",
   components: {
-    Logo,
     SubItem,
     SvgIcon
   },
@@ -79,9 +77,12 @@ export default defineComponent({
     },
     style(){
       return `--el-menu-item-height: 50px;
-              --el-menu-text-color: var(--layout-aside-menu-text-color);
-              --el-menu-border-color: var(--layout-aside-bg);
-              --el-menu-hover-bg-color: var(--el-color-primary-light-7);`
+              --el-menu-text-color: var(--layout-aside-menu-color);
+              --el-menu-hover-text-color: var(--layout-aside-menu-hover-color);
+              --el-menu-border-color: var(--layout-border);
+              --el-menu-hover-bg-color: var(--layout-aside-menu-hover-bg-color);
+              --el-menu-active-color:var(--layout-aside-menu-hover-color);
+              `
     }
   }
 });

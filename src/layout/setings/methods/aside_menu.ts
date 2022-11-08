@@ -6,25 +6,25 @@ export default {
         this.onAsideMenuBgGradualChange();
     },
     onAsideMenuBgGradualChange(){
-        let topBarBgGradual = store.getters['config/getConfig']('topBarBgGradual');
-        let color = store.getters['config/getConfig']('topBarBg');
-        if(topBarBgGradual && color){
-            document.documentElement.style.setProperty('--layout-nav-bars-bg', `linear-gradient(to bottom left , ${color}, ${getLightColor(color, 0.6)})`);
+        let gradual = store.getters['config/getConfig']('asideMenuBgGradual');
+        let color = store.getters['config/getConfig']('asideMenuBg');
+        if(gradual && color){
+            document.documentElement.style.setProperty('--layout-aside-menu-bg', `linear-gradient(to bottom left , ${color}, ${getLightColor(color, 0.6)})`);
         } else {
-            document.documentElement.style.setProperty('--layout-nav-bars-bg', color);
+            document.documentElement.style.setProperty('--layout-aside-menu-bg', color);
         }
     },
     onAsideMenuDefaultColorChange(){
-        let topBarDefaultColor = store.getters['config/getConfig']('topBarDefaultColor');
-        document.documentElement.style.setProperty('--layout-nav-bars-color', topBarDefaultColor);
+        let color = store.getters['config/getConfig']('asideMenuDefaultColor');
+        document.documentElement.style.setProperty('--layout-aside-menu-color', color);
     },
     onAsideMenuSelectedColorChange(){
-        let topBarSelectedColor = store.getters['config/getConfig']('topBarSelectedColor');
-        document.documentElement.style.setProperty('--layout-nav-bars-hover-color', topBarSelectedColor);
+        let color = store.getters['config/getConfig']('asideMenuSelectedColor');
+        document.documentElement.style.setProperty('--layout-aside-menu-hover-color', color);
     },
     onAsideMenuSelectedBgChange(){
-        let topBarSelectedBg = store.getters['config/getConfig']('topBarSelectedBg');
-        document.documentElement.style.setProperty('--layout-nav-bars-hover-bg-color', topBarSelectedBg);
+        let bg = store.getters['config/getConfig']('asideMenuSelectedBg');
+        document.documentElement.style.setProperty('--layout-aside-menu-hover-bg-color', bg);
     },
     initAsideMenu(){ // 初始化顶栏配置
         this.onAsideMenuBgChange();

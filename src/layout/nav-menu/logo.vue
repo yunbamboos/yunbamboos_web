@@ -32,10 +32,22 @@ export default {
     },
     getLayoutLogoStyle() {
       let collapse = store.getters['config/getConfig']("collapse");
+      let defaultColor = store.getters['config/getConfig']("asideMenuDefaultColor");
+      let selectedColor = store.getters['config/getConfig']("asideMenuSelectedColor");
+      let color = defaultColor? defaultColor: 'var(--el-color-primary)';
+      let hColor = selectedColor? selectedColor: 'var(--color-primary-light-5)';
       if (collapse) {
-        return `--layout-logo-width:var(--layout-aside-collapse-width);`;
+        return `
+                --layout-logo-width:var(--layout-aside-collapse-width);
+                --layout-logo-color: ${color};
+                --layout-logo-hover-color: ${hColor};
+                `;
       } else {
-        return `--layout-logo-width:var(--layout-aside-width);`;
+        return `
+                --layout-logo-width:var(--layout-aside-width);
+                --layout-logo-color: ${color};
+                --layout-logo-hover-color: ${hColor};
+                 `;
       }
     }
   },

@@ -33,7 +33,6 @@
 <script lang="ts">
 import {toRefs, reactive, defineComponent} from 'vue';
 import store from '@/store';
-import Logo from '@/layout/logo/index.vue';
 import {Route} from "@/model";
 import SubItem from "@/layout/nav-menu/subItem.vue";
 import SvgIcon from "@/components/svg-icon/index.vue";
@@ -48,7 +47,6 @@ interface StateType {
 export default defineComponent({
   name: "NavMenuHorizontal",
   components: {
-    Logo,
     SubItem,
     SvgIcon
   },

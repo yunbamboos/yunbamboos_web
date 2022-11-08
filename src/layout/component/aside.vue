@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import {defineComponent} from 'vue';
-import Logo from '@/layout/logo/index.vue';
+import Logo from '@/layout/nav-menu/logo.vue';
 import NavMenuVertical from '@/layout/nav-menu/vertical.vue';
 import store from "@/store";
 
