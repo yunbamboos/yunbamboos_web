@@ -22,7 +22,7 @@
               <span>{{ $t(menu.meta.title) }}</span>
             </template>
             <template #title v-else>
-              <a :href="menu.meta.link" target="_blank" rel="opener" class="w100">
+              <a :href="menu.meta.link" target="_blank" rel="opener">
                 {{ $t(menu.meta.title) }}
               </a>
             </template>

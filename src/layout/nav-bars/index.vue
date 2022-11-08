@@ -1,9 +1,9 @@
 <template>
   <div class="layout-nav-bars-container">
-    <LogoBar/>
+    <LogoBar v-if="false"/>
     <CollapseBar/>
-    <BreadcrumbBar v-if="false"/>
-    <MenuBar/>
+    <BreadcrumbBar v-if="true"/>
+    <MenuBar v-if="false"/>
     <UserBar/>
   </div>
 </template>
